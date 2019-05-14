@@ -16,6 +16,11 @@ using ExcelDataReader.Log;
 using ExcelDataReader;
 using System.IO;
 using System.Windows.Automation;
+using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+
 
 
 
@@ -30,22 +35,66 @@ namespace ItemUploadTool
         DataTable table3 = new DataTable("BOMLOOKUP");
         DataTable table4 = new DataTable("Refdwg");
         DataTable table5 = new DataTable("bcodeslist");
+
+        DataTable mtodbmto = null;
+        DataTable mtodbmtorev = null;
+        List<string> listofjobs = new List<string>();
+
+
+
         public DataTable bom_Table;
+
 
         int trigger = 0;
         PD_EDWDataSet1TableAdapters.JDEItemMasterTableAdapter itemmaster = new PD_EDWDataSet1TableAdapters.JDEItemMasterTableAdapter();
         PD_EDWDataSet2TableAdapters.spoolsTableAdapter BOMLOOKS = new PD_EDWDataSet2TableAdapters.spoolsTableAdapter();
         PD_EDWDataSetTableAdapters.SpecTableAdapter missingcodes = new PD_EDWDataSetTableAdapters.SpecTableAdapter();
+        PD_EDWDataSetTableAdapters.JDEItemMasterTableAdapter LIVEDESCCHECK = new PD_EDWDataSetTableAdapters.JDEItemMasterTableAdapter();
         BOMConnectDataSetTableAdapters.v_spoolsTableAdapter reffinder = new BOMConnectDataSetTableAdapters.v_spoolsTableAdapter();
         BOMConnectDataSetTableAdapters.MTODashboardTableAdapter bomfinder = new BOMConnectDataSetTableAdapters.MTODashboardTableAdapter();
+        PD_EDWDataSet3TableAdapters.TransmittalsTableAdapter backlog = new PD_EDWDataSet3TableAdapters.TransmittalsTableAdapter();
+        PD_EDWDataSet3TableAdapters.jobsTableAdapter GetJobNum = new PD_EDWDataSet3TableAdapters.jobsTableAdapter();
+        PD_EDWDataSet3TableAdapters.isoLogTableAdapter IsoLogs = new PD_EDWDataSet3TableAdapters.isoLogTableAdapter();
+        PD_EDWDataSet3TableAdapters.MTODashboardTableAdapter mtodbstuff = new PD_EDWDataSet3TableAdapters.MTODashboardTableAdapter();
+
 
         public Form1()
         {
 
 
             //MessageBox.Show(s);
-            
+
             InitializeComponent();
+
+            mtodbmto = mtodbstuff.GetData(JobListCB.Text.ToString());
+            mtodbmtorev = mtodbmto.Copy();
+            //mtodbmtorev.Columns["Date"].DataType = typeof(string);
+            MTODBREVDG.DataSource = mtodbmtorev;
+
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.dataGridView1, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.dataGridView2, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.dataGridView3, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.t3breakout, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.t4dgv, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.BacklogDGV, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.MTODBMTODG, new object[] { true });
+                            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null, this.MTODBREVDG, new object[] { true });
 
 
 
@@ -172,6 +221,10 @@ namespace ItemUploadTool
                     tboxsch.Text = pcodeval.Substring(11, 4);
                     tboxrating.Text = pcodeval.Substring(15, 4);
                 }
+                if (t1template.Text == "MISCMTL7")
+                {
+                    tboxsize2.Text = pcodeval.Substring(8, 3);
+                }
 
                 if (t1template.Text == "FLANGE3" || (t1template.Text == "FORGING1" || (t1template.Text == "VALVE1" || (t1template.Text == "MISCMTL1" || (t1template.Text == "MISCMTL3")))))
                 {
@@ -214,9 +267,9 @@ namespace ItemUploadTool
 
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                //MessageBox.Show("An error has occurred, please contact Jared Hicks. E1" + "\n" + ex.Message);
             }
             timer1.Stop();
             timer1.Start();
@@ -224,22 +277,35 @@ namespace ItemUploadTool
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pD_EDWDataSet31.Transmittals' table. You can move, or remove it, as needed.
+            this.transmittalsTableAdapter.Fill(this.pD_EDWDataSet31.Transmittals);
+            // TODO: This line of code loads data into the 'pD_EDWDataSet3.Transmittals' table. You can move, or remove it, as needed.
+            this.transmittalsTableAdapter.Fill(this.pD_EDWDataSet3.Transmittals);
             string s = Environment.UserName;
 
             s = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(s.ToLower());
             string usernameformatted = s.Replace(".", " ");
             this.Text = s;
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() +"."+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString().Left(1);
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString().Left(1);
             this.Text = String.Format("Item Upload Tool {0} - " + usernameformatted, version);
             // TODO: This line of code loads data into the 'pD_EDWDataSet.JDEItemMaster' table. You can move, or remove it, as needed.
             //this.jDEItemMasterTableAdapter.Fill(this.pD_EDWDataSet.JDEItemMaster);
 
+            BacklogDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             t4dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            DataTable joblisttable = mtodbstuff.GetDataBy();
+
+            foreach (DataRow row in joblisttable.Rows)
+            {
+                listofjobs.Add(row["Production_No"].ToString());
+            }
+
+            JobListCB.DataSource = listofjobs;
 
             // TODO: This line of code loads data into the 'pD_EDWDataSet.Spec' table. You can move, or remove it, as needed.
-           // this.specTableAdapter.Fill(this.pD_EDWDataSet.Spec);
+            // this.specTableAdapter.Fill(this.pD_EDWDataSet.Spec);
             t1template.Items.Add("PIPE1");
             t1template.Items.Add("BUTTWLD1");
             t1template.Items.Add("BUTTWLD2");
@@ -263,10 +329,13 @@ namespace ItemUploadTool
             t1template.Items.Add("MISCMTL2");
             t1template.Items.Add("MISCMTL3");
             t1template.Items.Add("MISCMTL4");
+            t1template.Items.Add("MISCMTL5");
             t1template.Items.Add("MISCMTL6");
+            t1template.Items.Add("MISCMTL7");
+            t1template.Items.Add("MISCMTL8");
 
 
-
+            BacklogDGV.AutoResizeColumns();
         }
         /// <Auto GL Class population first three chars for carbon and stainless>
         /// //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -282,6 +351,10 @@ namespace ItemUploadTool
             if (t2mat.Text == "40")
             {
                 t2gl.Text = "403";
+            }
+            if (t2mat.Text == "10")
+            {
+                t2gl.Text = "402";
             }
             if (t2mat.Text == "00")
             {
@@ -306,6 +379,10 @@ namespace ItemUploadTool
             if (t2mat.Text == "70")
             {
                 t2gl.Text = "408";
+            }
+            if (t2mat.Text == "30")
+            {
+                t2gl.Text = "406";
             }
             t2gl.SelectionStart = 0;
             t2gl.SelectionLength = t2gl.Text.Length;
@@ -353,8 +430,10 @@ namespace ItemUploadTool
                     currentlastcellt2 = currentlastcellt2 - 5;
                     dataGridView3.Rows.RemoveAt(dataGridView3.Rows.Count - 1);
                 }
-                catch
-                { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occurred, please contact Jared Hicks. E2" + "\n" + ex.Message);
+                }
             }
         }
         /// <Undo Sort>
@@ -387,9 +466,9 @@ namespace ItemUploadTool
                 Clipboard.SetDataObject(
                 this.dataGridView1.GetClipboardContent());
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E3" + "\n" + ex.Message);
             }
             string q = Environment.UserName;
             q = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(q.ToLower());
@@ -414,7 +493,10 @@ namespace ItemUploadTool
                 Clipboard.SetDataObject(
                 this.dataGridView2.GetClipboardContent());
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E4" + "\n" + ex.Message);
+            }
             string q = Environment.UserName;
             q = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(q.ToLower());
             string usernameformatted = q.Replace(".", " ");
@@ -477,6 +559,8 @@ namespace ItemUploadTool
             t2listfromclip.SelectedItem = null;
 
         }
+        ToolTip t = new ToolTip();
+        ToolTip t2tt = new ToolTip();
         /// <Add Data-Materials>
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// </summary>
@@ -484,6 +568,123 @@ namespace ItemUploadTool
         /// <param name="e"></param>
         private void t1add_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataTable SC_table = null;
+                DataTable S1_table = null;
+                DataTable S2_table = null;
+                DataTable SCH_table = null;
+                DataTable RATING_table = null;
+                DataTable SGC_table = null;
+                String[] sc = null;
+                String s1 = null;
+                String s2 = null;
+                String sch = null;
+                String rtg = null;
+                String sgc = null;
+                if (tboxsubcom.Text != "")
+                {
+                    SC_table = LIVEDESCCHECK.GetDataBySUBCOMM(tboxsubcom.Text);
+                    sc = SC_table.Rows[0]["SUBCOMM_DESC"].ToString().Split(null);
+                }
+                if (tboxsize1.Text != "")
+                {
+                    S1_table = LIVEDESCCHECK.GetDataBySIZE1(tboxsize1.Text);
+                    s1 = S1_table.Rows[0]["SIZE1_DESC"].ToString();
+                }
+                if (tboxsize2.Text != "")
+                {
+                    S2_table = LIVEDESCCHECK.GetDataBySIZE2(tboxsize2.Text);
+                    s2 = S2_table.Rows[0]["SIZE2_DESC"].ToString();
+                }
+                if (tboxsch.Text != "")
+                {
+                    SCH_table = LIVEDESCCHECK.GetDataBySCH(tboxsch.Text);
+                    sch = SCH_table.Rows[0]["SCH_DESC"].ToString();
+                }
+                if (tboxrating.Text != "")
+                {
+                    RATING_table = LIVEDESCCHECK.GetDataByRATING(tboxrating.Text);
+                    rtg = RATING_table.Rows[0]["RATING_EC_DESC"].ToString();
+                }
+                if (tboxmat.Text != "")
+                {
+                    SGC_table = LIVEDESCCHECK.GetDataBySGC(tboxmat.Text);
+                    sgc = SGC_table.Rows[0]["SGC_DESC"].ToString();
+                }
+
+
+
+
+
+
+
+                foreach (string scom in sc)
+                {
+                    if (!t1desc.ToString().ToLower().Contains(scom.ToLower()))
+                    {
+                        t.BackColor = System.Drawing.Color.Red;
+                        t.Show("Error in description - Sub-Commodity", t1desc, 5000);
+                    }
+
+                }
+
+                if (!t1desc.ToString().ToLower().Contains(s1.ToLower() + " "))
+                {
+                    t.Show("Error in description - Size 1", t1desc, 5000);
+
+                }
+                if (tboxsize2.Text != "")
+                {
+                    if (!t1desc.ToString().ToLower().Contains(" " + s2.ToLower() + " "))
+                    {
+                        t.Show("Error in description - Size 2", t1desc, 5000);
+
+                    }
+                }
+                if (tboxsch.Text != "")
+                {
+                    if (!t1desc.ToString().ToLower().Contains(" " + sch.ToLower() + " "))
+                    {
+                        t.BackColor = System.Drawing.Color.Red;
+                        t.Show("Error in description - Sch", t1desc, 5000);
+
+                    }
+                }
+                if (tboxrating.Text != "")
+                {
+                    if (!t1desc.ToString().ToLower().Contains(" " + rtg.ToLower() + " "))
+                    {
+                        t.Show("Error in description - Rating", t1desc, 5000);
+
+                    }
+                }
+                if (tboxmat.Text != "")
+                {
+                    if (!t1desc.ToString().ToLower().Contains(" " + sgc.ToLower()))
+                    {
+                        t.Show("Error in description - SGC", t1desc, 5000);
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            string LPT;
+            if (t1TagItemCB.Checked)
+            {
+                LPT = "3";
+            }
+            else if (!t1TagItemCB.Checked)
+            {
+                LPT = "3";
+            }
+
+
             if (t1template.Text == "")
             {
                 MessageBox.Show("Please Select a Teamplate", "Missing Template", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -491,7 +692,7 @@ namespace ItemUploadTool
             }
             string pcodecheck = "";
             string desccheck = "";
-            for (int i = 1; i < dataGridView1.Rows.Count; i++)
+            for (int i = 1; i < dataGridView1.Rows.Count-1; i++)
             {
                 if (dataGridView1.Rows.Count <= 1)
                 {
@@ -510,6 +711,7 @@ namespace ItemUploadTool
                         {
                             pcodecheck = dataGridView1.Rows[i].Cells[4].Value.ToString();
                             desccheck = dataGridView1.Rows[i].Cells[6].Value.ToString() + dataGridView1.Rows[i].Cells[7].Value.ToString();
+
                         }
 
                         if (t1pcode.Text == pcodecheck || (t1desc.Text == desccheck))
@@ -520,7 +722,10 @@ namespace ItemUploadTool
 
 
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+
+                    }
                 }
             }
 
@@ -575,10 +780,22 @@ namespace ItemUploadTool
                         dataGridView1.Rows[lastrow].Cells[14].Value = tboxrating.Text;
                         dataGridView1.Rows[lastrow].Cells[15].Value = tboxmat.Text;
                         dataGridView1.Rows[lastrow].Cells[32].Value = t1template.Text;
+                        dataGridView1.Rows[lastrow].Cells[18].Value = t1commclass.Text;
                         if (t1desc.Text.Length >= 30)
                         {
-                            dataGridView1.Rows[lastrow].Cells[6].Value = t1desc.Text.Substring(0, 30);
-                            dataGridView1.Rows[lastrow].Cells[7].Value = t1desc.Text.Substring(30, (t1desc.Text.Length - 30));
+                            string value = t1desc.Text;
+                            string space = value[29].ToString();
+
+                            if (space == " ")
+                            {
+                                dataGridView1.Rows[lastrow].Cells[6].Value = t1desc.Text.Substring(0, 30);
+                                dataGridView1.Rows[lastrow].Cells[7].Value = " " + t1desc.Text.Substring(30, (t1desc.Text.Length - 30));
+                            }
+                            if (space != " ")
+                            {
+                                dataGridView1.Rows[lastrow].Cells[6].Value = t1desc.Text.Substring(0, 30);
+                                dataGridView1.Rows[lastrow].Cells[7].Value = t1desc.Text.Substring(30, (t1desc.Text.Length - 30));
+                            }
                         }
 
                         else
@@ -601,11 +818,11 @@ namespace ItemUploadTool
                         }
                         dataGridView1.Rows[lastrow].Cells[22].Value = "LB";
                         dataGridView1.Rows[lastrow].Cells[23].Value = "SF";
-                        if (tboxcom.Text == "V" || (tboxcom.Text == "M"))
+                        if (tboxcom.Text == "V" || tboxcom.Text == "M" || t1TagItemCB.Checked)
                         {
                             dataGridView1.Rows[lastrow].Cells[25].Value = "3";
                         }
-                        else
+                        else if (tboxcom.Text != "V" || tboxcom.Text != "M" || !t1TagItemCB.Checked)
                         {
                             dataGridView1.Rows[lastrow].Cells[25].Value = "2";
                         }
@@ -617,12 +834,17 @@ namespace ItemUploadTool
                         i++;
                     }
 
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E7" + "\n" + ex.Message);
+                    }
                 }
                 currentlastcellt1 = currentlastcellt1 + 5;
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E8" + "\n" + ex.Message);
+            }
         }
 
         private void addAsCorrection04ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -657,7 +879,10 @@ namespace ItemUploadTool
                             return;
                         }
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E9" + "\n" + ex.Message);
+                    }
                 }
             }
             label1.ForeColor = Color.Black;
@@ -736,11 +961,11 @@ namespace ItemUploadTool
                         }
                         dataGridView1.Rows[lastrow].Cells[22].Value = "LB";
                         dataGridView1.Rows[lastrow].Cells[23].Value = "SF";
-                        if (tboxcom.Text == "V")
+                        if (tboxcom.Text == "V" || t1TagItemCB.Checked)
                         {
                             dataGridView1.Rows[lastrow].Cells[25].Value = "3";
                         }
-                        else
+                        if (tboxcom.Text != "V" || !t1TagItemCB.Checked)
                         {
                             dataGridView1.Rows[lastrow].Cells[25].Value = "2";
                         }
@@ -751,12 +976,18 @@ namespace ItemUploadTool
                         dataGridView1.Rows[lastrow].Cells[33].Value = "Y";
                         i++;
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E10" + "\n" + ex.Message);
+                    }
                 }
+
                 currentlastcellt1 = currentlastcellt1 + 5;
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E11" + "\n" + ex.Message);
+            }
         }
 
         /// <Add Data-Supports>
@@ -768,108 +999,113 @@ namespace ItemUploadTool
         {
             try
             {
-                double t2wtnum = Convert.ToDouble(t2wt.Text);
-                double t2sanum = Convert.ToDouble(t2sa.Text);
+            double t2wtnum = Convert.ToDouble(t2wt.Text);
+            double t2sanum = Convert.ToDouble(t2sa.Text);
 
-                if (t2mat.Text == String.Empty || (t2mat.Text == "NA" || (t2gl.Text == String.Empty || (t2wt.Text == String.Empty || (t2sa.Text == String.Empty || (t2desc.Text == String.Empty || (t2pcode.Text == String.Empty || (t2wtnum <= 0 || (t2sanum <= 0) || (t2sanum >= t2wtnum)))))))))
+            if (t2mat.Text == String.Empty || (t2mat.Text == "NA" || (t2gl.Text == String.Empty || (t2wt.Text == String.Empty || (t2sa.Text == String.Empty || (t2desc.Text == String.Empty || (t2pcode.Text == String.Empty || (t2wtnum <= 0 || (t2sanum <= 0) || (t2sanum >= t2wtnum)))))))))
+            {
+                MessageBox.Show("Please make sure all fields are filled out.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            string pcodecheck = "";
+            string desccheck = "";
+            for (int K = 1; K < dataGridView2.Rows.Count-1; K++)
+            {
+                if (dataGridView2.Rows.Count <= 1)
                 {
-                    MessageBox.Show("Please make sure all fields are filled out.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+
                 }
-
-
-                string pcodecheck = "";
-                string desccheck = "";
-                for (int K = 1; K < dataGridView2.Rows.Count; K++)
+                else
                 {
-                    if (dataGridView2.Rows.Count <= 1)
+                    try
                     {
-
+                    if (t2desc.Text.Length <= 30)
+                    {
+                        pcodecheck = dataGridView2.Rows[K].Cells[4].Value.ToString();
+                        desccheck = dataGridView2.Rows[K].Cells[6].Value.ToString();
                     }
                     else
                     {
-                        try
-                        {
-                            if (t2desc.Text.Length <= 30)
-                            {
-                                pcodecheck = dataGridView2.Rows[K].Cells[4].Value.ToString();
-                                desccheck = dataGridView2.Rows[K].Cells[6].Value.ToString();
-                            }
-                            else
-                            {
-                                pcodecheck = dataGridView2.Rows[K].Cells[4].Value.ToString();
-                                desccheck = dataGridView2.Rows[K].Cells[6].Value.ToString() + dataGridView2.Rows[K].Cells[7].Value.ToString();
-                            }
-
-                            if (t2pcode.Text == pcodecheck || (t2desc.Text == desccheck))
-                            {
-                                MessageBox.Show("This item Seems to Exist already", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-
-
-                        }
-                        catch { }
+                        pcodecheck = dataGridView2.Rows[K].Cells[4].Value.ToString();
+                        desccheck = dataGridView2.Rows[K].Cells[6].Value.ToString() + dataGridView2.Rows[K].Cells[7].Value.ToString();
                     }
-                }
 
-
-                List<string> list = new List<string>();
-                list.Add("");
-                list.Add("31");
-                list.Add("32");
-                list.Add("31500");
-                list.Add("32500");
-                int i = 1;
-                foreach (string item in list)
-                {
-                    int counter = i;
-                    if (i > 2)
+                    if (t2pcode.Text == pcodecheck || (t2desc.Text == desccheck))
                     {
-                        counter = 2;
+                        MessageBox.Show("This item Seems to Exist already", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    Int32 lastrow = dataGridView2.Rows.Count - 1;
-                    this.dataGridView2.Rows.Add();
 
-                    dataGridView2.Rows[lastrow].Cells[0].Value = "02";
-                    dataGridView2.Rows[lastrow].Cells[1].Value = counter;
-                    dataGridView2.Rows[lastrow].Cells[2].Value = item;
 
-                    dataGridView2.Rows[lastrow].Cells[4].Value = t2pcode.Text;
-                    dataGridView2.Rows[lastrow].Cells[5].Value = t2pcode.Text;
-                    dataGridView2.Rows[lastrow].Cells[6].Value = t2desc.Text;
-                    dataGridView2.Rows[lastrow].Cells[17].Value = t2mat.Text;
-                    dataGridView2.Rows[lastrow].Cells[24].Value = t2gl.Text;
-                    dataGridView2.Rows[lastrow].Cells[30].Value = t2wt.Text;
-                    dataGridView2.Rows[lastrow].Cells[31].Value = t2sa.Text;
-
-                    dataGridView2.Rows[lastrow].Cells[9].Value = "A";
-                    dataGridView2.Rows[lastrow].Cells[21].Value = "EA";
-                    dataGridView2.Rows[lastrow].Cells[22].Value = "LB";
-                    dataGridView2.Rows[lastrow].Cells[23].Value = "SF";
-                    dataGridView2.Rows[lastrow].Cells[25].Value = "2";
-                    dataGridView2.Rows[lastrow].Cells[26].Value = "0";
-                    dataGridView2.Rows[lastrow].Cells[27].Value = "P";
-                    dataGridView2.Rows[lastrow].Cells[28].Value = "S";
-                    dataGridView2.Rows[lastrow].Cells[29].Value = "3650";
-                    dataGridView2.Rows[lastrow].Cells[33].Value = "Y";
-                    i++;
-
+                    }
+                     catch (Exception ex)
+                     {
+                         MessageBox.Show("An error has occurred, please contact Jared Hicks. E12" + "\n" + ex.Message);
+                     }
                 }
-                Int32 lastrow2 = dataGridView3.Rows.Count;
-                if (t2reqcheckbox.Checked)
-                {
-                    this.dataGridView3.Rows.Add();
-                    dataGridView3.Rows[lastrow2].Cells[0].Value = t2pcode.Text;
-                    dataGridView3.Rows[lastrow2].Cells[1].Value = t2qtytextbox.Text;
-                    dataGridView3.Rows[lastrow2].Cells[2].Value = t2jobnumbertextbox.Text;
-                    dataGridView3.Rows[lastrow2].Cells[3].Value = t2reftextbox.Text;
-
-                }
-                currentlastcellt2 = currentlastcellt2 + 5;
             }
-            catch
-            { }
+
+
+            List<string> list = new List<string>();
+            list.Add("");
+            list.Add("31");
+            list.Add("32");
+            list.Add("31500");
+            list.Add("32500");
+            int i = 1;
+            foreach (string item in list)
+            {
+                int counter = i;
+                if (i > 2)
+                {
+                    counter = 2;
+                }
+                Int32 lastrow = dataGridView2.Rows.Count - 1;
+                this.dataGridView2.Rows.Add();
+
+                dataGridView2.Rows[lastrow].Cells[0].Value = "02";
+                dataGridView2.Rows[lastrow].Cells[1].Value = counter;
+                dataGridView2.Rows[lastrow].Cells[2].Value = item;
+
+                dataGridView2.Rows[lastrow].Cells[4].Value = t2pcode.Text;
+                dataGridView2.Rows[lastrow].Cells[5].Value = t2pcode.Text;
+                dataGridView2.Rows[lastrow].Cells[6].Value = t2desc.Text;
+                dataGridView2.Rows[lastrow].Cells[17].Value = t2mat.Text;
+                dataGridView2.Rows[lastrow].Cells[24].Value = t2gl.Text;
+                dataGridView2.Rows[lastrow].Cells[30].Value = t2wt.Text;
+                dataGridView2.Rows[lastrow].Cells[31].Value = t2sa.Text;
+
+                dataGridView2.Rows[lastrow].Cells[9].Value = "A";
+                dataGridView2.Rows[lastrow].Cells[21].Value = "EA";
+                dataGridView2.Rows[lastrow].Cells[22].Value = "LB";
+                dataGridView2.Rows[lastrow].Cells[23].Value = "SF";
+                dataGridView2.Rows[lastrow].Cells[25].Value = "2";
+                dataGridView2.Rows[lastrow].Cells[26].Value = "0";
+                dataGridView2.Rows[lastrow].Cells[27].Value = "P";
+                dataGridView2.Rows[lastrow].Cells[28].Value = "S";
+                dataGridView2.Rows[lastrow].Cells[29].Value = "3650";
+                dataGridView2.Rows[lastrow].Cells[33].Value = "Y";
+                i++;
+
+            }
+            Int32 lastrow2 = dataGridView3.Rows.Count;
+            if (t2reqcheckbox.Checked)
+            {
+                this.dataGridView3.Rows.Add();
+                dataGridView3.Rows[lastrow2].Cells[0].Value = t2pcode.Text;
+                dataGridView3.Rows[lastrow2].Cells[1].Value = t2qtytextbox.Text;
+                dataGridView3.Rows[lastrow2].Cells[2].Value = t2jobnumbertextbox.Text;
+                dataGridView3.Rows[lastrow2].Cells[3].Value = t2reftextbox.Text;
+
+            }
+            currentlastcellt2 = currentlastcellt2 + 5;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E13" + "\n" + ex.Message);
+            }
 
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -928,8 +1164,10 @@ namespace ItemUploadTool
                 }
                 currentlastcellt2 = currentlastcellt2 + 5;
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E14" + "\n" + ex.Message);
+            }
         }
 
 
@@ -969,7 +1207,10 @@ namespace ItemUploadTool
                             return;
                         }
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E15" + "\n" + ex.Message);
+                    }
                 }
             }
 
@@ -1064,7 +1305,10 @@ namespace ItemUploadTool
                         dataGridView1.Rows[lastrow].Cells[33].Value = "Y";
                         i++;
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E16" + "\n" + ex.Message);
+                    }
                 }
                 currentlastcellt1 = currentlastcellt1 + 5;
                 t1pcode.Text = string.Empty;
@@ -1110,7 +1354,10 @@ namespace ItemUploadTool
                             return;
                         }
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E17" + "\n" + ex.Message);
+                    }
                 }
             }
 
@@ -1205,7 +1452,10 @@ namespace ItemUploadTool
                         dataGridView1.Rows[lastrow].Cells[33].Value = "Y";
                         i++;
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E18" + "\n" + ex.Message);
+                    }
                 }
                 currentlastcellt1 = currentlastcellt1 + 5;
                 t1pcode.Text = string.Empty;
@@ -1215,8 +1465,10 @@ namespace ItemUploadTool
                 t1wt.Text = string.Empty;
                 t1sa.Text = string.Empty;
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E19" + "\n" + ex.Message);
+            }
         }
 
 
@@ -1288,8 +1540,10 @@ namespace ItemUploadTool
                 t2wt.Text = string.Empty;
                 t2sa.Text = string.Empty;
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E20" + "\n" + ex.Message);
+            }
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -1355,8 +1609,10 @@ namespace ItemUploadTool
                 t2wt.Text = string.Empty;
                 t2sa.Text = string.Empty;
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E21" + "\n" + ex.Message);
+            }
         }
 
 
@@ -1734,6 +1990,9 @@ namespace ItemUploadTool
             if (tboxsubcom.Text == "COWN") { t1template.Text = ("MISCMTL4"); }
             if (tboxsubcom.Text == "GAPA") { t1template.Text = ("MISCMTL6"); }
             if (tboxsubcom.Text == "THRM") { t1template.Text = ("MISCMTL6"); }
+            if (tboxsubcom.Text == "BART") { t1template.Text = ("MISCMTL8"); }
+            if (tboxsubcom.Text == "XLAR") { t1template.Text = ("MISCMTL7"); }
+
 
 
 
@@ -1758,10 +2017,7 @@ namespace ItemUploadTool
         }
         private void t1template_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (t1template.Text.ToString().Contains("MISC"))
-            {
-                MessageBox.Show("Please Confirm the individual segments are correct");
-            }
+
         }
         private void t1wt_TextChanged(object sender, EventArgs e)
         {
@@ -1798,6 +2054,7 @@ namespace ItemUploadTool
         {
             timer1.Stop();
             DataTable im_table = itemmaster.GetDataByItemCodeLive(t1pcode.Text);
+            DataTable im2_table = itemmaster.GetDataBy2(t1pcode.Text);
 
             if (im_table.Rows.Count == 0)
             {
@@ -1814,6 +2071,35 @@ namespace ItemUploadTool
                 label1.ForeColor = Color.Black;
                 label1.Text = "Status:*";
             }
+
+
+            if (label1.Text == "Status:* Null")
+            {
+                t1pcode.Refresh();
+                im2_table.Clear();
+                var listofsimilar = new List<string>();
+                listofsimilar.Clear();
+                if (t1pcode.Text.Length >= 7)
+                {
+                    im2_table = itemmaster.GetDataBy2(t1pcode.Text + "%");
+                    try
+                    {
+                        if (im2_table.Rows.Count >= 5)
+                        {
+
+                            for (int a = 0; a < 5; a = a + 1)
+                            {
+                                listofsimilar.Add(im2_table.Rows[a]["LONG_ITEM"].ToString());
+                            }
+                            var listsimilar = string.Join(Environment.NewLine, listofsimilar);
+                            t2tt.Show(listsimilar, label6, 6000);
+                        }
+                    }
+                    catch { }
+                }
+            }
+
+
 
         }
 
@@ -1857,6 +2143,9 @@ namespace ItemUploadTool
         private void label1_Click(object sender, EventArgs e)
         {
             DataTable im_table = itemmaster.GetDataByItemCodeLive(t1pcode.Text);
+
+
+
             try
             {
                 tboxcom.Text = im_table.Rows[0]["COMM"].ToString();
@@ -1872,8 +2161,13 @@ namespace ItemUploadTool
                 t1desc.Text = (im_table.Rows[0]["ITEM_DESC_1"].ToString() + im_table.Rows[0]["ITEM_DESC_2"].ToString());
                 t1template.Text = im_table.Rows[0]["ITEM_TEMPLATE"].ToString();
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E22" + "\n" + ex.Message);
+            }
+
+
+
         }
 
         private void t1imtable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1932,7 +2226,10 @@ namespace ItemUploadTool
                         t1desc.Text = (im_table.Rows[0]["ITEM_DESC_1"].ToString() + im_table.Rows[0]["ITEM_DESC_2"].ToString());
                         t1template.Text = im_table.Rows[0]["ITEM_TEMPLATE"].ToString();
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error has occurred, please contact Jared Hicks. E23" + "\n" + ex.Message);
+                    }
                 }
             }
             timer1.Start();
@@ -1971,7 +2268,7 @@ namespace ItemUploadTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E24" + "\n" + ex.Message);
             }
             listBox1.Refresh();
             for (int i = 0; i < listBox1.Items.Count; i++)
@@ -2013,9 +2310,9 @@ namespace ItemUploadTool
                 Clipboard.SetDataObject(
                 this.t3breakout.GetClipboardContent());
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E25" + "\n" + ex.Message);
             }
 
         }
@@ -2046,7 +2343,7 @@ namespace ItemUploadTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E26" + "\n" + ex.Message);
             }
             listBox1.Refresh();
             for (int i = 0; i < listBox1.Items.Count; i++)
@@ -2150,7 +2447,7 @@ namespace ItemUploadTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E27" + "\n" + ex.Message);
             }
 
         }
@@ -2168,7 +2465,7 @@ namespace ItemUploadTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E28" + "\n" + ex.Message);
             }
             listBox1.Refresh();
             for (int i = 0; i < listBox1.Items.Count; i++)
@@ -2214,7 +2511,7 @@ namespace ItemUploadTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E29" + "\n" + ex.Message);
             }
 
             listBox1.Refresh();
@@ -2289,7 +2586,7 @@ namespace ItemUploadTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E30" + "\n" + ex.Message);
             }
 
         }
@@ -2387,8 +2684,10 @@ namespace ItemUploadTool
                 {
                     t2desc.Text = t2listfromclip.SelectedItem.ToString();
                 }
-                catch
-                { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occurred, please contact Jared Hicks. E31" + "\n" + ex.Message);
+                }
             desctospcode = t2desc.Text;
             desctospcode = desctospcode.Replace(" ", "").Replace("-", "").Replace(".", "").Replace("*", "").Replace("/", "").Replace("\\", "").Replace("#", "").Replace("(", "").Replace(")", "").Replace("'", "").Replace("\"", "").Replace(";", "").Replace(":", "");
             t2pcode.Text = ("S" + desctospcode);
@@ -2399,8 +2698,10 @@ namespace ItemUploadTool
                 t2wt.Text = table2.Rows[t2listfromclip.SelectedIndex]["Wt"].ToString();
                 t2sa.Text = table2.Rows[t2listfromclip.SelectedIndex]["SA"].ToString();
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("An error has occurred, please contact Jared Hicks. E32" + "\n" + ex.Message);
+            }
             if (t2mat.Text == "NA")
             {
                 MessageBox.Show(mat_string);
@@ -2427,8 +2728,10 @@ namespace ItemUploadTool
                 Clipboard.SetDataObject(
                 this.dataGridView3.GetClipboardContent());
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E33" + "\n" + ex.Message);
+            }
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -2444,8 +2747,10 @@ namespace ItemUploadTool
                 Clipboard.SetDataObject(
                 this.dataGridView1.GetClipboardContent());
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E34" + "\n" + ex.Message);
+            }
         }
 
         private void t1mat_TextChanged_1(object sender, EventArgs e)
@@ -2533,8 +2838,9 @@ namespace ItemUploadTool
                 //     t1gl.Text = t1gl.Text + glclass4;
                 //  }
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+            }
 
 
 
@@ -2616,89 +2922,93 @@ namespace ItemUploadTool
         {
             try
             {
+                if (!string.IsNullOrWhiteSpace(tboxsize1.Text))
+                {
+                    t1gl.Text = String.Empty;
+                    timer2.Stop();
+                    int threedigitsize = Convert.ToInt32(tboxsize1.Text);
+                    double size1trimed = Convertsize1(threedigitsize);
+                    if (size1trimed <= 2)
+                    {
+                        glclass4 = "1";
+                    }
+                    if (size1trimed >= 2.5 & size1trimed <= 3)
+                    {
+                        glclass4 = "2";
+                    }
+                    if (size1trimed >= 4 & size1trimed <= 12)
+                    {
+                        glclass4 = "3";
+                    }
+                    if (size1trimed >= 14 & size1trimed <= 16)
+                    {
+                        glclass4 = "4";
+                    }
+                    if (size1trimed >= 18 & size1trimed <= 24)
+                    {
+                        glclass4 = "5";
+                    }
+                    if (size1trimed >= 26 & size1trimed <= 48)
+                    {
+                        glclass4 = "6";
+                    }
+                    if (size1trimed > 48)
+                    {
+                        glclass4 = "7";
+                    }
 
-                t1gl.Text = String.Empty;
-                timer2.Stop();
-                int threedigitsize = Convert.ToInt32(tboxsize1.Text);
-                double size1trimed = Convertsize1(threedigitsize);
-                if (size1trimed <= 2)
-                {
-                    glclass4 = "1";
-                }
-                if (size1trimed >= 2.5 & size1trimed <= 3)
-                {
-                    glclass4 = "2";
-                }
-                if (size1trimed >= 4 & size1trimed <= 12)
-                {
-                    glclass4 = "3";
-                }
-                if (size1trimed >= 14 & size1trimed <= 16)
-                {
-                    glclass4 = "4";
-                }
-                if (size1trimed >= 18 & size1trimed <= 24)
-                {
-                    glclass4 = "5";
-                }
-                if (size1trimed >= 26 & size1trimed <= 48)
-                {
-                    glclass4 = "6";
-                }
-                if (size1trimed > 48)
-                {
-                    glclass4 = "7";
-                }
 
 
-
-                if (t1mat.Text == "40")
-                {
-                    t1gl.Text = "403";
-                }
-                if (t1mat.Text == "00")
-                {
-                    t1gl.Text = "401";
-                }
-                if (t1mat.Text == "42")
-                {
-                    t1gl.Text = "403";
-                }
-                if (t1mat.Text == "60")
-                {
-                    t1gl.Text = "401";
-                }
-                if (t1mat.Text == "88")
-                {
-                    t1gl.Text = "404";
-                }
-                if (t1mat.Text == "83")
-                {
-                    t1gl.Text = "404";
-                }
-                if (t1mat.Text == "84")
-                {
-                    t1gl.Text = "404";
-                }
-                if (t1mat.Text == "70")
-                {
-                    t1gl.Text = "408";
-                }
-                if (t1mat.Text == "81")
-                {
-                    t1gl.Text = "408";
-                }
-                if (t1mat.Text == String.Empty)
-                {
-                    t1gl.Text = "40 " + glclass4;
-                }
-                else
-                {
-                    t1gl.Text = t1gl.Text + glclass4;
+                    if (t1mat.Text == "40")
+                    {
+                        t1gl.Text = "403";
+                    }
+                    if (t1mat.Text == "00")
+                    {
+                        t1gl.Text = "401";
+                    }
+                    if (t1mat.Text == "42")
+                    {
+                        t1gl.Text = "403";
+                    }
+                    if (t1mat.Text == "60")
+                    {
+                        t1gl.Text = "401";
+                    }
+                    if (t1mat.Text == "88")
+                    {
+                        t1gl.Text = "404";
+                    }
+                    if (t1mat.Text == "83")
+                    {
+                        t1gl.Text = "404";
+                    }
+                    if (t1mat.Text == "84")
+                    {
+                        t1gl.Text = "404";
+                    }
+                    if (t1mat.Text == "70")
+                    {
+                        t1gl.Text = "408";
+                    }
+                    if (t1mat.Text == "81")
+                    {
+                        t1gl.Text = "408";
+                    }
+                    if (t1mat.Text == String.Empty)
+                    {
+                        t1gl.Text = "40 " + glclass4;
+                    }
+                    else
+                    {
+                        t1gl.Text = t1gl.Text + glclass4;
+                    }
                 }
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+
+            }
 
         }
 
@@ -2797,7 +3107,10 @@ namespace ItemUploadTool
                     table1.Columns.Add("Wt");
                     table1.Columns.Add("SA");
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occurred, please contact Jared Hicks. E37" + "\n" + ex.Message);
+                }
                 string s = Clipboard.GetText();
                 int numLines = s.Split('\n').Length;
                 string[] split = s.Split('\n');
@@ -2833,15 +3146,17 @@ namespace ItemUploadTool
                         indexer++;
                     }
                 }
-                catch
-                { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occurred, please contact Jared Hicks. E38" + "\n" + ex.Message);
+                }
 
 
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E39" + "\n" + ex.Message);
             }
             //t1missingitems.Text = t1missingitems.
         }
@@ -2960,7 +3275,7 @@ namespace ItemUploadTool
                                     }
                                     catch
                                     {
-
+                                        MessageBox.Show("There was an issue with the excel files, please make sure any blank spaces or dashes are converted into Zeros.");
                                     }
                                 }
                             }
@@ -2997,6 +3312,12 @@ namespace ItemUploadTool
                         sawi.Columns[11].ColumnName = "Tag";
                         foreach (DataRow row in supportinfo.Rows)
                         {
+
+                           // if (row["TOT_AREA"].ToString() == "-")
+                            //    row.SetField("TOT_AREA", "0");
+                           // if (row["TOT_WT"].ToString() == "-")
+                             //   row.SetField("TOT_WT", "0");
+
                             DataRow[] rows = sawi.Select("Tag = '" + row["Desc"] + "'");
                             var sumsa = rows.Sum(row2 => Convert.ToDouble(row2["TOT_AREA"]));
                             var sumwt = rows.Sum(row2 => Convert.ToDouble(row2["TOT_WT"]));
@@ -3006,6 +3327,14 @@ namespace ItemUploadTool
                                 if (rows[0][1].ToString().Contains("304"))
                                 {
                                     row["Mat"] = "40";
+                                }
+                                if (rows[0][1].ToString().Contains("387"))
+                                {
+                                    row["Mat"] = "10";
+                                }
+                                if (rows[0][1].ToString().Contains("335"))
+                                {
+                                    row["Mat"] = "30";
                                 }
                                 else if (rows[0][1].ToString().Contains("316"))
                                 {
@@ -3052,7 +3381,7 @@ namespace ItemUploadTool
                             }
                             catch
                             {
-
+                                MessageBox.Show("There was an issue with the excel files, please make sure any blank spaces or dashes are converted into Zeros.");
                             }
                             row["SA"] = sumsa;
                             row["Weight"] = sumwt;
@@ -3123,15 +3452,17 @@ namespace ItemUploadTool
                         indexer++;
                     }
                 }
-                catch
-                { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occurred, please contact Jared Hicks. E40" + "\n" + ex.Message);
+                }
 
 
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("An error has occurred, please contact Jared Hicks. E41" + "\n" + ex.Message);
             }
             //t1missingitems.Text = t1missingitems.
         }
@@ -3147,8 +3478,8 @@ namespace ItemUploadTool
                 t2sa.Text = im_table.Rows[0]["SURFACE_AREA_CONV"].ToString();
                 t2desc.Text = (im_table.Rows[0]["ITEM_DESC_1"].ToString() + im_table.Rows[0]["ITEM_DESC_2"].ToString());
             }
-            catch
-            { }
+            catch (Exception ex)
+            { MessageBox.Show("An error has occurred, please contact Jared Hicks. E42" + "\n" + ex.Message); }
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -3317,16 +3648,31 @@ namespace ItemUploadTool
                 }
 
                 if (!row.Cells[6].Value.ToString().ToLower().Contains(row.Cells[1].Value.ToString().ToLower() + " "))
+                {
                     row.Cells["t3size1"].Style.ForeColor = Color.Red;
+                    if (row.Cells[6].Value.ToString().ToLower().Contains(row.Cells[1].Value.ToString().ToLower()))
+                        row.Cells["t3size1"].Style.ForeColor = Color.Blue;
+                }
 
                 if (!row.Cells[6].Value.ToString().ToLower().Contains(" " + row.Cells[2].Value.ToString().ToLower() + " "))
+                {
                     row.Cells["t3size2"].Style.ForeColor = Color.Red;
+                    if (row.Cells[6].Value.ToString().ToLower().Contains(row.Cells[2].Value.ToString().ToLower()))
+                        row.Cells["t3size2"].Style.ForeColor = Color.Blue;
+                }
 
                 if (!row.Cells[6].Value.ToString().ToLower().Contains(" " + row.Cells[3].Value.ToString().ToLower() + " "))
+                {
                     row.Cells["t3sch"].Style.ForeColor = Color.Red;
-
+                    if (row.Cells[6].Value.ToString().ToLower().Contains(row.Cells[3].Value.ToString().ToLower()))
+                        row.Cells["t3sch"].Style.ForeColor = Color.Blue;
+                }
                 if (!row.Cells[6].Value.ToString().ToLower().Contains(" " + row.Cells[4].Value.ToString().ToLower() + " "))
+                {
                     row.Cells["t3rating"].Style.ForeColor = Color.Red;
+                    if (row.Cells[6].Value.ToString().ToLower().Contains(row.Cells[4].Value.ToString().ToLower()))
+                        row.Cells["t3rating"].Style.ForeColor = Color.Blue;
+                }
 
                 if (!row.Cells[6].Value.ToString().ToLower().Contains(row.Cells[5].Value.ToString().ToLower()))
                     row.Cells["t3sgc"].Style.ForeColor = Color.Red;
@@ -3341,17 +3687,17 @@ namespace ItemUploadTool
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-           
+
             t4dgv.Rows.Clear();
-            string right = t4jobtb.Text.Right(5).PadLeft(5,'0');
-            DataTable Refdwg = reffinder.GetData(right,  t4spooltb.Text.PadLeft(6,'0'));
+            string right = t4jobtb.Text.Right(5).PadLeft(5, '0');
+            DataTable Refdwg = reffinder.GetData(right, t4spooltb.Text.PadLeft(6, '0'));
             if (Refdwg.Rows.Count > 0)
             {
                 t4refdwgtb.Text = Refdwg.Rows[0]["spool_refDwg"].ToString();
 
                 if (t4rb1.Checked == true)
                 {
-                   DataTable bom_Table = bomfinder.GetDataBy(t4refdwgtb.Text + "%");
+                    DataTable bom_Table = bomfinder.GetDataBy(t4refdwgtb.Text + "%");
                     if (bom_Table.Rows.Count > 0)
                     {
 
@@ -3393,7 +3739,7 @@ namespace ItemUploadTool
                 }
 
 
-                
+
 
 
 
@@ -3406,7 +3752,7 @@ namespace ItemUploadTool
             for (int i = 0; i < (t4BarcodeBomList.Rows.Count - 1); i++)
             {
 
-                
+
                 if (t4rb1.Checked == true)
                 {
                     DataTable Refdwg = reffinder.GetDataBy(t4BarcodeBomList.Rows[i].Cells["bcodes"].FormattedValue.ToString());
@@ -3461,7 +3807,7 @@ namespace ItemUploadTool
         {
             int l = 0;
             string s = Clipboard.GetText();
-            string[] lines = s.Split('\n','\r');
+            string[] lines = s.Split('\n', '\r');
             foreach (string ln in lines)
             {
                 if (ln.Length == 6)
@@ -3480,7 +3826,375 @@ namespace ItemUploadTool
         {
             t4dgv.Rows.Clear();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_3(object sender, EventArgs e)
+        {
+            DataTable bltable = backlog.GetData();
+            bltable.Columns["TransmittalNumber"].SetOrdinal(2);
+            bltable.Columns["job_num"].SetOrdinal(1);
+            bltable.Columns["Days Aging"].SetOrdinal(3);
+            bltable.Columns["Client"].SetOrdinal(0);
+            bltable.Columns["TransmittalNumber"].ColumnName = "Trans";
+            bltable.Columns["job_num"].ColumnName = "JobNum";
+            bltable.AcceptChanges();
+            BacklogDGV.DataSource = bltable;
+            BacklogDGV.AutoResizeColumns();
+            // BacklogDGV.RowsDefaultCellStyle.BackColor = Color.LightGray;fffb dddddddddddddddddddddddddddd
+            //BacklogDGV.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            // string jobnumtoid = BacklogDGV.CurrentRow.Cells[1].Value.ToString();
+            //int transie = BacklogDGV.SelectedCells[2].RowIndex;
+            //int x;
+            //string jid = GetJobNum.GetJobId(jobnumtoid);
+            //bool result = Int32.TryParse(jid, out x);
+            //MessageBox.Show(jid.ToString());
+            //int x = Convert.ToInt32(jid);
+            // DataTable IsoLogNow = IsoLogs.GetIsoLog(x, BacklogDGV.CurrentRow.Cells[2].Value.ToString());
+            // IsologDGV.DataSource = IsoLogNow;
+            //IsologDGV.AutoResizeColumns();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void t1desc_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JobListCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            {
+                mtodbmto = mtodbstuff.GetData(JobListCB.Text.ToString());
+                MTODBMTODG.DataSource = mtodbmto.DefaultView;
+            }
+
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mtodbrevassit_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void selectLineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<DataGridViewRow> rowCollection = new List<DataGridViewRow>();
+
+            foreach (DataGridViewCell cell in MTODBMTODG.SelectedCells)
+            {
+                rowCollection.Add(MTODBMTODG.Rows[cell.RowIndex]);
+            }
+
+            foreach (DataGridViewRow row in rowCollection.Distinct())
+            {
+
+
+
+                //String timeStamp = GetTimestamp(DateTime.Now);
+                var datarow = ((DataRowView)row.DataBoundItem).Row;
+                string timedate = DateTime.Now.ToShortDateString();
+                //MTODBREVDG.Columns["Date"].ValueType = typeof(String);
+
+                if (row.Cells[13].Value.ToString() == "")
+                {
+                    string qtytype = Microsoft.VisualBasic.Interaction.InputBox("FT or EA?" + System.Environment.NewLine + row.Cells[7].Value.ToString(), "Set Qty Type", "FT or EA");
+                    if (qtytype.ToUpper() == "FT")
+                    {
+                        datarow.SetField("UnitOfMeasure", "FT");
+                    }
+                    if (qtytype.ToUpper() == "EA")
+                    {
+                        datarow.SetField("UnitOfMeasure", "EA");
+                    }
+                }
+
+                datarow.SetField("Record_Type", "MR");
+                datarow.SetField("Date", timedate.ToString());
+                datarow.SetField("Source", newtrans.Text.ToString());
+                datarow.SetField("Long_ID", "");
+                datarow.SetField("JDE_Desc", "");
+
+                if (checkBox2.Checked)
+                {
+                    datarow.SetField("Pipeline_Reference", textBox2.Text);
+                    datarow.SetField("Piecemark", "");
+                }
+
+                mtodbmtorev.Rows.Add(datarow.ItemArray);
+
+
+            }
+
+        }
+        public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null && (!checkBox2.Checked))
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+        }
+
+        private void textBox2_TextChanged_2(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null && (!checkBox2.Checked))
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null && (!checkBox2.Checked))
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null && (!checkBox2.Checked))
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null && (!checkBox2.Checked))
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null && (!checkBox2.Checked))
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+        }
+
+        private void addLineAsNegativeQtyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<DataGridViewRow> rowCollection = new List<DataGridViewRow>();
+
+            foreach (DataGridViewCell cell in MTODBMTODG.SelectedCells)
+            {
+                rowCollection.Add(MTODBMTODG.Rows[cell.RowIndex]);
+            }
+
+            foreach (DataGridViewRow row in rowCollection)
+            {
+                try
+                {
+                    //String timeStamp = GetTimestamp(DateTime.Now);
+                    var datarow = ((DataRowView)row.DataBoundItem).Row;
+                    string timedate = DateTime.Now.ToShortDateString();
+                    //MTODBREVDG.Columns["Date"].ValueType = typeof(String);
+                    string qtyvar = row.Cells[11].Value.ToString();
+                    string qty2var = row.Cells[12].Value.ToString();
+
+                    if (row.Cells[13].Value.ToString() == "")
+                    {
+                        string qtytype = Microsoft.VisualBasic.Interaction.InputBox("FT or EA?" + System.Environment.NewLine + row.Cells[7].Value.ToString(), "Set Qty Type", "FT or EA");
+                        if (qtytype.ToUpper() == "FT")
+                        {
+                            datarow.SetField("UnitOfMeasure", "FT");
+                        }
+                        if (qtytype.ToUpper() == "EA")
+                        {
+                            datarow.SetField("UnitOfMeasure", "EA");
+                        }
+                    }
+
+                    if (qtyvar.Contains("-"))
+                    {
+                        MessageBox.Show("This item is already has a NEGATIVE qty.");
+                        break;
+                    }
+                    else
+                        datarow.SetField("Record_Type", "MR");
+                    datarow.SetField("Date", timedate.ToString());
+                    datarow.SetField("Qty", "-" + qtyvar);
+                    datarow.SetField("Qty2", "-" + qty2var);
+                    datarow.SetField("Source", newtrans.Text.ToString());
+                    datarow.SetField("Long_ID", "");
+                    datarow.SetField("JDE_Desc", "");
+
+                    if (checkBox2.Checked)
+                    {
+                        datarow.SetField("Pipeline_Reference", textBox2.Text);
+                        datarow.SetField("Piecemark", "");
+                    }
+
+                    mtodbmtorev.Rows.Add(datarow.ItemArray);
+
+
+                }
+                catch { }
+            }
+        }
+
+        private void addLineWithCustomQtyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            List<DataGridViewRow> rowCollection = new List<DataGridViewRow>();
+
+            foreach (DataGridViewCell cell in MTODBMTODG.SelectedCells)
+            {
+                rowCollection.Add(MTODBMTODG.Rows[cell.RowIndex]);
+            }
+
+            foreach (DataGridViewRow row in rowCollection.Distinct())
+            {
+                string qtyvar = row.Cells[11].Value.ToString();
+                string qty2var = row.Cells[12].Value.ToString();
+                string newqty = Microsoft.VisualBasic.Interaction.InputBox("Replacing Qty with" + System.Environment.NewLine + row.Cells[7].Value.ToString(), "Set Custom Qty", qtyvar);
+                var datarow = ((DataRowView)row.DataBoundItem).Row;
+                string timedate = DateTime.Now.ToShortDateString();
+                datarow.SetField("Record_Type", "MR");
+                datarow.SetField("Date", timedate.ToString());
+                datarow.SetField("Source", newtrans.Text.ToString());
+                datarow.SetField("Long_ID", "");
+                datarow.SetField("JDE_Desc", "");
+                //MessageBox.Show(row.Cells[13].Value.ToString());
+                if (row.Cells[13].Value.ToString() == "FT")
+                {
+                    datarow.SetField("Qty", newqty);
+                    datarow.SetField("Qty2", Convert.ToDouble(newqty) * 1.05);
+                }
+                if (row.Cells[13].Value.ToString() == "EA")
+                {
+                    datarow.SetField("Qty", newqty);
+                    datarow.SetField("Qty2", newqty);
+                }
+                if (row.Cells[13].Value.ToString() == "")
+                {
+                    string qtytype = Microsoft.VisualBasic.Interaction.InputBox("FT or EA?" + System.Environment.NewLine + row.Cells[7].Value.ToString(), "Set Qty Type", "FT or EA");
+                    if (qtytype.ToUpper() == "FT")
+                    {
+                        datarow.SetField("Qty", newqty);
+                        datarow.SetField("Qty2", Convert.ToDouble(newqty) * 1.05);
+                        datarow.SetField("UnitOfMeasure", "FT");
+                    }
+                    if (qtytype.ToUpper() == "EA")
+                    {
+                        datarow.SetField("Qty", newqty);
+                        datarow.SetField("Qty2", newqty);
+                        datarow.SetField("UnitOfMeasure", "EA");
+                    }
+
+                }
+
+                if (checkBox2.Checked)
+                {
+                    datarow.SetField("Pipeline_Reference", textBox2.Text);
+                    datarow.SetField("Piecemark", "");
+                }
+
+                mtodbmtorev.Rows.Add(datarow.ItemArray);
+            }
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Possible issues when adding a positive Qty from a line that contains a negative Qty" + System.Environment.NewLine + System.Environment.NewLine + "TODO: Add bottom DataGrid Right Click functions" + System.Environment.NewLine + "TODO: Add Export / Copy Button" + System.Environment.NewLine + System.Environment.NewLine + "If you encounter any unlisted errors please let me know.", "Error List");
+
+        }
+
+        private void countQtyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //List<string> rowCollection = new List<string>();
+            //string totalcount = "";
+
+            //foreach (DataGridViewCell cell in MTODBMTODG.SelectedCells)
+            //{
+            //    rowCollection.Add(MTODBMTODG.Rows[cell]);
+            //}
+
+            //foreach (string row in rowCollection.Distinct())
+            //{
+
+            //}
+        }
+
+
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+            if (!checkBox2.Checked)
+            {
+                mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
+            }
+        }
     }
 }
+
 
 

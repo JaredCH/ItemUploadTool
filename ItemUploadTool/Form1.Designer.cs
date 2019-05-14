@@ -32,9 +32,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabcontrol = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.t1commclass = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.t1TagItemCB = new System.Windows.Forms.CheckBox();
             this.t1imtable = new System.Windows.Forms.DataGridView();
             this.itemCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -256,21 +265,73 @@
             this.t4desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.t4spooltb = new System.Windows.Forms.TextBox();
             this.t4jobtb = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.IsologDGV = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.BacklogDGV = new System.Windows.Forms.DataGridView();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.newtrans = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.JobListCB = new System.Windows.Forms.ComboBox();
+            this.MTODBMTODG = new System.Windows.Forms.DataGridView();
+            this.mtodbrevassit = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.selectLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLineAsNegativeQtyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLineWithCustomQtyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countQtyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MTODBREVDG = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.mtoDataSet1 = new ItemUploadTool.MTODataSet();
+            this.mtoDataSet2 = new ItemUploadTool.MTODataSet();
             this.jDEItemMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.specTableAdapter = new ItemUploadTool.PD_EDWDataSetTableAdapters.SpecTableAdapter();
             this.jDEItemMasterTableAdapter = new ItemUploadTool.PD_EDWDataSetTableAdapters.JDEItemMasterTableAdapter();
             this.pDEDWDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mtoDataSet1 = new ItemUploadTool.MTODataSet();
+            this.transmittalsBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.pD_EDWDataSet31 = new ItemUploadTool.PD_EDWDataSet3();
+            this.transmittalsBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.pD_EDWDataSet3 = new ItemUploadTool.PD_EDWDataSet3();
+            this.transmittalsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.transmittalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.transmittalsTableAdapter = new ItemUploadTool.PD_EDWDataSet3TableAdapters.TransmittalsTableAdapter();
+            this.transmittalsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.transmittalsBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.bomConnectDataSet1 = new ItemUploadTool.BOMConnectDataSet();
             this.pD_EDWDataSet1 = new ItemUploadTool.PD_EDWDataSet1();
             this.pD_EDWDataSet11 = new ItemUploadTool.PD_EDWDataSet1();
             this.pD_EDWDataSet12 = new ItemUploadTool.PD_EDWDataSet1();
-            this.mtoDataSet2 = new ItemUploadTool.MTODataSet();
+            this.mtodbrevassistupload = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.duplicateLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setTransmittalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleLineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.allLinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearItemCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleLineToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.allLinesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabcontrol.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.t1imtable)).BeginInit();
@@ -302,13 +363,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.t4BarcodeBomList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.t4dgv)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IsologDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BacklogDGV)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MTODBMTODG)).BeginInit();
+            this.mtodbrevassit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MTODBREVDG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jDEItemMasterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDEDWDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bomConnectDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet2)).BeginInit();
+            this.mtodbrevassistupload.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabcontrol
@@ -320,15 +402,22 @@
             this.tabcontrol.Controls.Add(this.tabPage2);
             this.tabcontrol.Controls.Add(this.tabPage3);
             this.tabcontrol.Controls.Add(this.tabPage4);
+            this.tabcontrol.Controls.Add(this.tabPage5);
+            this.tabcontrol.Controls.Add(this.tabPage6);
             this.tabcontrol.Location = new System.Drawing.Point(-1, 1);
             this.tabcontrol.Name = "tabcontrol";
             this.tabcontrol.SelectedIndex = 0;
+            this.tabcontrol.ShowToolTips = true;
             this.tabcontrol.Size = new System.Drawing.Size(1191, 711);
             this.tabcontrol.TabIndex = 21;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.t1commclass);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.t1TagItemCB);
             this.tabPage1.Controls.Add(this.t1imtable);
             this.tabPage1.Controls.Add(this.t1desccheckbox);
             this.tabPage1.Controls.Add(this.t1missingitems);
@@ -375,8 +464,47 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1183, 685);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Fittings";
+            this.tabPage1.Text = "  Fittings  ";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(236, 81);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 13);
+            this.label13.TabIndex = 60;
+            this.label13.Text = "Comm Class";
+            // 
+            // t1commclass
+            // 
+            this.t1commclass.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.t1commclass.Location = new System.Drawing.Point(239, 97);
+            this.t1commclass.Name = "t1commclass";
+            this.t1commclass.Size = new System.Drawing.Size(52, 20);
+            this.t1commclass.TabIndex = 59;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(236, -2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 58;
+            this.label6.Text = "tt area";
+            this.label6.Visible = false;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // t1TagItemCB
+            // 
+            this.t1TagItemCB.AutoSize = true;
+            this.t1TagItemCB.Location = new System.Drawing.Point(560, 156);
+            this.t1TagItemCB.Name = "t1TagItemCB";
+            this.t1TagItemCB.Size = new System.Drawing.Size(99, 17);
+            this.t1TagItemCB.TabIndex = 57;
+            this.t1TagItemCB.Text = "Item needs tag.";
+            this.t1TagItemCB.UseVisualStyleBackColor = true;
+            this.t1TagItemCB.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // t1imtable
             // 
@@ -1077,6 +1205,7 @@
             this.t1desc.Name = "t1desc";
             this.t1desc.Size = new System.Drawing.Size(278, 20);
             this.t1desc.TabIndex = 1;
+            this.t1desc.TextChanged += new System.EventHandler(this.t1desc_TextChanged_1);
             this.t1desc.Enter += new System.EventHandler(this.t1desc_Enter);
             // 
             // t1pcode
@@ -1131,7 +1260,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1183, 685);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Supports";
+            this.tabPage2.Text = "  Supports  ";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // label2
@@ -1809,12 +1938,12 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1183, 685);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Partcodes / Breakout";
+            this.tabPage3.Text = "  Partcodes / Breakout  ";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(975, 588);
@@ -1844,6 +1973,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.t3breakout.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.t3breakout.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.t3breakout.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.t3breakout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.t3breakout.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.t3subcom,
@@ -1854,17 +1991,25 @@
             this.t3sgc,
             this.Desc,
             this.Partcode});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.t3breakout.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.t3breakout.DefaultCellStyle = dataGridViewCellStyle29;
             this.t3breakout.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.t3breakout.Location = new System.Drawing.Point(383, 26);
             this.t3breakout.Name = "t3breakout";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.t3breakout.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.t3breakout.RowHeadersVisible = false;
             this.t3breakout.RowTemplate.Height = 15;
             this.t3breakout.Size = new System.Drawing.Size(785, 556);
@@ -2072,7 +2217,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1183, 685);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Bom Lookup";
+            this.tabPage4.Text = "  Bom Lookup  ";
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // groupBox1
@@ -2291,6 +2436,336 @@
             this.toolTip1.SetToolTip(this.t4jobtb, "This can be the full Location and Job String or just the job number, with or with" +
         "out the leading 0\'s");
             // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage5.Controls.Add(this.IsologDGV);
+            this.tabPage5.Controls.Add(this.button3);
+            this.tabPage5.Controls.Add(this.button2);
+            this.tabPage5.Controls.Add(this.BacklogDGV);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1183, 685);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "  Backlog Tracking  ";
+            // 
+            // IsologDGV
+            // 
+            this.IsologDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IsologDGV.Location = new System.Drawing.Point(616, 6);
+            this.IsologDGV.Name = "IsologDGV";
+            this.IsologDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.IsologDGV.Size = new System.Drawing.Size(495, 667);
+            this.IsologDGV.TabIndex = 3;
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(522, 38);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "IsoLog";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(522, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Refresh";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_3);
+            // 
+            // BacklogDGV
+            // 
+            this.BacklogDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BacklogDGV.Location = new System.Drawing.Point(9, 9);
+            this.BacklogDGV.Name = "BacklogDGV";
+            this.BacklogDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.BacklogDGV.Size = new System.Drawing.Size(495, 667);
+            this.BacklogDGV.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage6.Controls.Add(this.splitContainer1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1183, 685);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "  Revision Assitant -Beta";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.checkBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.label15);
+            this.splitContainer1.Panel1.Controls.Add(this.label14);
+            this.splitContainer1.Panel1.Controls.Add(this.newtrans);
+            this.splitContainer1.Panel1.Controls.Add(this.label12);
+            this.splitContainer1.Panel1.Controls.Add(this.label11);
+            this.splitContainer1.Panel1.Controls.Add(this.label10);
+            this.splitContainer1.Panel1.Controls.Add(this.label9);
+            this.splitContainer1.Panel1.Controls.Add(this.label8);
+            this.splitContainer1.Panel1.Controls.Add(this.label7);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox6);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox5);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox4);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.JobListCB);
+            this.splitContainer1.Panel1.Controls.Add(this.MTODBMTODG);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(0, 70, 0, 0);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
+            this.splitContainer1.Panel1.Enter += new System.EventHandler(this.splitContainer1_Panel1_Enter);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.MTODBREVDG);
+            this.splitContainer1.Size = new System.Drawing.Size(1177, 679);
+            this.splitContainer1.SplitterDistance = 392;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label15.Location = new System.Drawing.Point(515, 4);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(126, 13);
+            this.label15.TabIndex = 16;
+            this.label15.Text = " BUG LIST 5/1/2019";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(81, 46);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Rev Transmittal";
+            // 
+            // newtrans
+            // 
+            this.newtrans.Location = new System.Drawing.Point(14, 43);
+            this.newtrans.Name = "newtrans";
+            this.newtrans.Size = new System.Drawing.Size(59, 20);
+            this.newtrans.TabIndex = 14;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(942, 20);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "JDE Desc";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(795, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Partcode";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(648, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Client Desc";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(501, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Pcmk";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(354, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Ref Dwg";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(210, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Source";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(945, 39);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(141, 20);
+            this.textBox6.TabIndex = 7;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(798, 39);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(141, 20);
+            this.textBox5.TabIndex = 6;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(651, 39);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(141, 20);
+            this.textBox4.TabIndex = 5;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(504, 39);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(141, 20);
+            this.textBox3.TabIndex = 4;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(357, 39);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(141, 20);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_2);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(210, 39);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(141, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // JobListCB
+            // 
+            this.JobListCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.JobListCB.FormattingEnabled = true;
+            this.JobListCB.Location = new System.Drawing.Point(11, 13);
+            this.JobListCB.Name = "JobListCB";
+            this.JobListCB.Size = new System.Drawing.Size(152, 21);
+            this.JobListCB.TabIndex = 1;
+            this.JobListCB.SelectedIndexChanged += new System.EventHandler(this.JobListCB_SelectedIndexChanged);
+            // 
+            // MTODBMTODG
+            // 
+            this.MTODBMTODG.AllowUserToAddRows = false;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MTODBMTODG.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            this.MTODBMTODG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MTODBMTODG.ContextMenuStrip = this.mtodbrevassit;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MTODBMTODG.DefaultCellStyle = dataGridViewCellStyle38;
+            this.MTODBMTODG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MTODBMTODG.Location = new System.Drawing.Point(0, 70);
+            this.MTODBMTODG.Name = "MTODBMTODG";
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MTODBMTODG.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            this.MTODBMTODG.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.MTODBMTODG.Size = new System.Drawing.Size(1177, 322);
+            this.MTODBMTODG.TabIndex = 0;
+            // 
+            // mtodbrevassit
+            // 
+            this.mtodbrevassit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectLineToolStripMenuItem,
+            this.addLineAsNegativeQtyToolStripMenuItem,
+            this.addLineWithCustomQtyToolStripMenuItem,
+            this.countQtyToolStripMenuItem});
+            this.mtodbrevassit.Name = "mtodbrevassit";
+            this.mtodbrevassit.Size = new System.Drawing.Size(215, 92);
+            this.mtodbrevassit.Opening += new System.ComponentModel.CancelEventHandler(this.mtodbrevassit_Opening);
+            // 
+            // selectLineToolStripMenuItem
+            // 
+            this.selectLineToolStripMenuItem.Name = "selectLineToolStripMenuItem";
+            this.selectLineToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.selectLineToolStripMenuItem.Text = "Add Line as Positive Qty";
+            this.selectLineToolStripMenuItem.Click += new System.EventHandler(this.selectLineToolStripMenuItem_Click);
+            // 
+            // addLineAsNegativeQtyToolStripMenuItem
+            // 
+            this.addLineAsNegativeQtyToolStripMenuItem.Name = "addLineAsNegativeQtyToolStripMenuItem";
+            this.addLineAsNegativeQtyToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.addLineAsNegativeQtyToolStripMenuItem.Text = "Add Line as Negative Qty";
+            this.addLineAsNegativeQtyToolStripMenuItem.Click += new System.EventHandler(this.addLineAsNegativeQtyToolStripMenuItem_Click);
+            // 
+            // addLineWithCustomQtyToolStripMenuItem
+            // 
+            this.addLineWithCustomQtyToolStripMenuItem.Name = "addLineWithCustomQtyToolStripMenuItem";
+            this.addLineWithCustomQtyToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.addLineWithCustomQtyToolStripMenuItem.Text = "Add Line with Custom Qty";
+            this.addLineWithCustomQtyToolStripMenuItem.Click += new System.EventHandler(this.addLineWithCustomQtyToolStripMenuItem_Click);
+            // 
+            // countQtyToolStripMenuItem
+            // 
+            this.countQtyToolStripMenuItem.Name = "countQtyToolStripMenuItem";
+            this.countQtyToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.countQtyToolStripMenuItem.Text = "Count Qty";
+            this.countQtyToolStripMenuItem.Click += new System.EventHandler(this.countQtyToolStripMenuItem_Click);
+            // 
+            // MTODBREVDG
+            // 
+            this.MTODBREVDG.AllowUserToAddRows = false;
+            this.MTODBREVDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MTODBREVDG.ContextMenuStrip = this.mtodbrevassistupload;
+            this.MTODBREVDG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MTODBREVDG.Location = new System.Drawing.Point(0, 0);
+            this.MTODBREVDG.Name = "MTODBREVDG";
+            this.MTODBREVDG.Size = new System.Drawing.Size(1177, 283);
+            this.MTODBREVDG.TabIndex = 1;
+            // 
             // timer1
             // 
             this.timer1.Interval = 500;
@@ -2312,6 +2787,16 @@
             this.timer4.Interval = 500;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
+            // mtoDataSet1
+            // 
+            this.mtoDataSet1.DataSetName = "MTODataSet";
+            this.mtoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mtoDataSet2
+            // 
+            this.mtoDataSet2.DataSetName = "MTODataSet";
+            this.mtoDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // jDEItemMasterBindingSource
             // 
             this.jDEItemMasterBindingSource.DataMember = "JDEItemMaster";
@@ -2331,10 +2816,54 @@
             this.pDEDWDataSetBindingSource.DataSource = this.pD_EDWDataSet;
             this.pDEDWDataSetBindingSource.Position = 0;
             // 
-            // mtoDataSet1
+            // transmittalsBindingSource5
             // 
-            this.mtoDataSet1.DataSetName = "MTODataSet";
-            this.mtoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.transmittalsBindingSource5.DataMember = "Transmittals";
+            this.transmittalsBindingSource5.DataSource = this.pD_EDWDataSet31;
+            // 
+            // pD_EDWDataSet31
+            // 
+            this.pD_EDWDataSet31.DataSetName = "PD_EDWDataSet3";
+            this.pD_EDWDataSet31.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // transmittalsBindingSource4
+            // 
+            this.transmittalsBindingSource4.DataMember = "Transmittals";
+            this.transmittalsBindingSource4.DataSource = this.pD_EDWDataSet3;
+            // 
+            // pD_EDWDataSet3
+            // 
+            this.pD_EDWDataSet3.DataSetName = "PD_EDWDataSet3";
+            this.pD_EDWDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // transmittalsBindingSource2
+            // 
+            this.transmittalsBindingSource2.DataMember = "Transmittals";
+            this.transmittalsBindingSource2.DataSource = this.pD_EDWDataSet3;
+            // 
+            // transmittalsBindingSource
+            // 
+            this.transmittalsBindingSource.DataMember = "Transmittals";
+            this.transmittalsBindingSource.DataSource = this.pD_EDWDataSet3;
+            // 
+            // transmittalsTableAdapter
+            // 
+            this.transmittalsTableAdapter.ClearBeforeFill = true;
+            // 
+            // transmittalsBindingSource1
+            // 
+            this.transmittalsBindingSource1.DataMember = "Transmittals";
+            this.transmittalsBindingSource1.DataSource = this.pD_EDWDataSet3;
+            // 
+            // transmittalsBindingSource3
+            // 
+            this.transmittalsBindingSource3.DataMember = "Transmittals";
+            this.transmittalsBindingSource3.DataSource = this.pD_EDWDataSet3;
+            // 
+            // bomConnectDataSet1
+            // 
+            this.bomConnectDataSet1.DataSetName = "BOMConnectDataSet";
+            this.bomConnectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pD_EDWDataSet1
             // 
@@ -2351,10 +2880,98 @@
             this.pD_EDWDataSet12.DataSetName = "PD_EDWDataSet1";
             this.pD_EDWDataSet12.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // mtoDataSet2
+            // mtodbrevassistupload
             // 
-            this.mtoDataSet2.DataSetName = "MTODataSet";
-            this.mtoDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.mtodbrevassistupload.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.duplicateLinesToolStripMenuItem,
+            this.setTransmittalToolStripMenuItem,
+            this.setDateToolStripMenuItem,
+            this.clearItemCodeToolStripMenuItem});
+            this.mtodbrevassistupload.Name = "mtodbrevassistupload";
+            this.mtodbrevassistupload.Size = new System.Drawing.Size(160, 92);
+            // 
+            // duplicateLinesToolStripMenuItem
+            // 
+            this.duplicateLinesToolStripMenuItem.Name = "duplicateLinesToolStripMenuItem";
+            this.duplicateLinesToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.duplicateLinesToolStripMenuItem.Text = "Duplicate Lines";
+            // 
+            // setTransmittalToolStripMenuItem
+            // 
+            this.setTransmittalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleLineToolStripMenuItem,
+            this.allLinesToolStripMenuItem});
+            this.setTransmittalToolStripMenuItem.Name = "setTransmittalToolStripMenuItem";
+            this.setTransmittalToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.setTransmittalToolStripMenuItem.Text = "Set Transmittal";
+            // 
+            // singleLineToolStripMenuItem
+            // 
+            this.singleLineToolStripMenuItem.Name = "singleLineToolStripMenuItem";
+            this.singleLineToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.singleLineToolStripMenuItem.Text = "Single Line";
+            // 
+            // allLinesToolStripMenuItem
+            // 
+            this.allLinesToolStripMenuItem.Name = "allLinesToolStripMenuItem";
+            this.allLinesToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.allLinesToolStripMenuItem.Text = "All Lines";
+            // 
+            // setDateToolStripMenuItem
+            // 
+            this.setDateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleLineToolStripMenuItem1,
+            this.allLinesToolStripMenuItem1});
+            this.setDateToolStripMenuItem.Name = "setDateToolStripMenuItem";
+            this.setDateToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.setDateToolStripMenuItem.Text = "Set Date";
+            // 
+            // singleLineToolStripMenuItem1
+            // 
+            this.singleLineToolStripMenuItem1.Name = "singleLineToolStripMenuItem1";
+            this.singleLineToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.singleLineToolStripMenuItem1.Text = "Single Line";
+            // 
+            // allLinesToolStripMenuItem1
+            // 
+            this.allLinesToolStripMenuItem1.Name = "allLinesToolStripMenuItem1";
+            this.allLinesToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.allLinesToolStripMenuItem1.Text = "All Lines";
+            // 
+            // clearItemCodeToolStripMenuItem
+            // 
+            this.clearItemCodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleLineToolStripMenuItem2,
+            this.allLinesToolStripMenuItem2});
+            this.clearItemCodeToolStripMenuItem.Name = "clearItemCodeToolStripMenuItem";
+            this.clearItemCodeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.clearItemCodeToolStripMenuItem.Text = "Clear Item Code";
+            // 
+            // singleLineToolStripMenuItem2
+            // 
+            this.singleLineToolStripMenuItem2.Name = "singleLineToolStripMenuItem2";
+            this.singleLineToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.singleLineToolStripMenuItem2.Text = "Single Line";
+            // 
+            // allLinesToolStripMenuItem2
+            // 
+            this.allLinesToolStripMenuItem2.Name = "allLinesToolStripMenuItem2";
+            this.allLinesToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.allLinesToolStripMenuItem2.Text = "All Lines";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(409, 20);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(59, 17);
+            this.checkBox2.TabIndex = 18;
+            this.checkBox2.Text = "Unfilter";
+            this.toolTip1.SetToolTip(this.checkBox2, "Check this box if you want to no longer filter for this value.\r\n*IMPORTANT* - Whe" +
+        "n you add items with this check box selected, it will add them with the Ref Dwg " +
+        "as what ever is typed in this box.");
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Form1
             // 
@@ -2403,13 +3020,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.t4BarcodeBomList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.t4dgv)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.IsologDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BacklogDGV)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MTODBMTODG)).EndInit();
+            this.mtodbrevassit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MTODBREVDG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jDEItemMasterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDEDWDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transmittalsBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bomConnectDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet2)).EndInit();
+            this.mtodbrevassistupload.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2653,6 +3292,62 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton t4rb2;
         private System.Windows.Forms.RadioButton t4rb1;
+        private System.Windows.Forms.CheckBox t1TagItemCB;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataGridView BacklogDGV;
+        private System.Windows.Forms.Button button2;
+        private PD_EDWDataSet3 pD_EDWDataSet3;
+        private System.Windows.Forms.BindingSource transmittalsBindingSource;
+        private PD_EDWDataSet3TableAdapters.TransmittalsTableAdapter transmittalsTableAdapter;
+        private System.Windows.Forms.BindingSource transmittalsBindingSource1;
+        private System.Windows.Forms.BindingSource transmittalsBindingSource2;
+        private System.Windows.Forms.BindingSource transmittalsBindingSource4;
+        private System.Windows.Forms.BindingSource transmittalsBindingSource3;
+        private PD_EDWDataSet3 pD_EDWDataSet31;
+        private System.Windows.Forms.BindingSource transmittalsBindingSource5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView IsologDGV;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView MTODBMTODG;
+        private System.Windows.Forms.DataGridView MTODBREVDG;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox JobListCB;
+        private BOMConnectDataSet bomConnectDataSet1;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ContextMenuStrip mtodbrevassit;
+        private System.Windows.Forms.ToolStripMenuItem selectLineToolStripMenuItem;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox t1commclass;
+        private System.Windows.Forms.ToolStripMenuItem addLineAsNegativeQtyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addLineWithCustomQtyToolStripMenuItem;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox newtrans;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ContextMenuStrip mtodbrevassistupload;
+        private System.Windows.Forms.ToolStripMenuItem duplicateLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setTransmittalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem singleLineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setDateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem singleLineToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem allLinesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem clearItemCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem singleLineToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem allLinesToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem countQtyToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

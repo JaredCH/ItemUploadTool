@@ -4,6 +4,9 @@
 
     partial class PD_EDWDataSet
     {
+        partial class JDEItemMasterDataTable
+        {
+        }
     }
 }
 

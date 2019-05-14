@@ -26,17 +26,7 @@ namespace ItemUploadTool.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=epicslsqld01;Initial Catalog=PD_EDW;Integrated Security=True")]
-        public string PD_EDWConnectionString {
-            get {
-                return ((string)(this["PD_EDWConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=epicslsqld01;Initial Catalog=MTO;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=epicslsql01;Initial Catalog=MTO;Integrated Security=True")]
         public string MTOConnectionString {
             get {
                 return ((string)(this["MTOConnectionString"]));
@@ -50,6 +40,16 @@ namespace ItemUploadTool.Properties {
         public string PD_EDWConnectionStringLive {
             get {
                 return ((string)(this["PD_EDWConnectionStringLive"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=epicslsql01;Initial Catalog=PD_EDW;Integrated Security=True")]
+        public string PD_EDWConnectionString {
+            get {
+                return ((string)(this["PD_EDWConnectionString"]));
             }
         }
     }

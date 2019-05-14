@@ -2161,7 +2161,7 @@ namespace ItemUploadTool.PD_EDWDataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ITEM_TEMPLATE, SHORT_ITEM, LONG_ITEM, ITEM_DESC_1, ITEM_DESC_2, COMM, COMM_DESC, SUBCOMM, SUBCOMM_DESC, SIZE1, SIZE1_DESC, SIZE2, SIZE2_DESC, SCH, SCH_DESC, RATING_EC, RATING_EC_DESC, SGC, SGC_DESC, MATERIAL_TYPE, MATERIAL_TYPE_DESC, PRIMARY_UOM, WEIGHT_CONV, WEIGHT_UOM, SURFACE_AREA_CONV, SURFACE_AREA_UOM, LAST_UPDATE_DT, LAST_UPDATE_J, GL_CLASS, CheckSum, InsertDateTime, UpdateDateTime FROM dbo.JDEItemMaster";
@@ -2185,6 +2185,11 @@ namespace ItemUploadTool.PD_EDWDataSet1TableAdapters {
             this._commandCollection[4].CommandText = "SELECT * FROM JDEItemMaster WHERE SGC = (@SGC)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SGC", global::System.Data.SqlDbType.NVarChar, 12, global::System.Data.ParameterDirection.Input, 0, 0, "SGC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT TOP 10 * FROM JDEItemMaster WHERE LONG_ITEM LIKE (@ITEMCODE)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ITEMCODE", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "LONG_ITEM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2337,6 +2342,42 @@ namespace ItemUploadTool.PD_EDWDataSet1TableAdapters {
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(SGC));
+            }
+            PD_EDWDataSet1.JDEItemMasterDataTable dataTable = new PD_EDWDataSet1.JDEItemMasterDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy4(PD_EDWDataSet1.JDEItemMasterDataTable dataTable, string ITEMCODE) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((ITEMCODE == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ITEMCODE));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual PD_EDWDataSet1.JDEItemMasterDataTable GetDataBy2(string ITEMCODE) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((ITEMCODE == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ITEMCODE));
             }
             PD_EDWDataSet1.JDEItemMasterDataTable dataTable = new PD_EDWDataSet1.JDEItemMasterDataTable();
             this.Adapter.Fill(dataTable);
