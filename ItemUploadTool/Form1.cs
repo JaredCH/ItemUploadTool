@@ -21,6 +21,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
+//TODO
+//
+// FILTER TO IGNORE PREBUYS IN REVISION ASSISTANT
+//
+//
+//
 
 
 
@@ -1042,7 +1048,7 @@ namespace ItemUploadTool
                     }
                      catch (Exception ex)
                      {
-                         MessageBox.Show("An error has occurred, please contact Jared Hicks. E12" + "\n" + ex.Message);
+                        
                      }
                 }
             }
@@ -3426,8 +3432,8 @@ namespace ItemUploadTool
                 string[] split = s.Split('\n');
                 for (int j = 0; j < numLines - 1; j++)
                 {
-                    string tabtodash = split[j].Replace('\t', '-');
-                    string[] spliter = tabtodash.Split('-');
+                    string tabtodash = split[j].Replace('\t', '$');
+                    string[] spliter = tabtodash.Split('$');
                     table2.Rows.Add(new object[]{
                     spliter[0],
                     spliter[1],
