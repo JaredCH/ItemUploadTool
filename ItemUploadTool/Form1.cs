@@ -572,6 +572,7 @@ namespace ItemUploadTool
             t2listfromclip.SelectedItem = null;
 
         }
+
         ToolTip t = new ToolTip();
         ToolTip t2tt = new ToolTip();
         /// <Add Data-Materials>
