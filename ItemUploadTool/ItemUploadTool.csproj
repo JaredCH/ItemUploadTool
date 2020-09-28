@@ -28,7 +28,7 @@
     <ProductName>Item Upload Tool</ProductName>
     <PublisherName>Jared Hicks</PublisherName>
     <SuiteName>EpicTools</SuiteName>
-    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationRevision>46</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -168,6 +168,12 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
     <Compile Include="MTODataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,6 +212,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PD_EDWDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PD_EDWDataSet4.cs">
+      <DependentUpon>PD_EDWDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PD_EDWDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PD_EDWDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -217,6 +231,9 @@
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -225,6 +242,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="BOMConnectDataSet.xsc">
       <DependentUpon>BOMConnectDataSet.xsd</DependentUpon>
@@ -296,6 +314,17 @@
     <None Include="PD_EDWDataSet3.xss">
       <DependentUpon>PD_EDWDataSet3.xsd</DependentUpon>
     </None>
+    <None Include="PD_EDWDataSet4.xsc">
+      <DependentUpon>PD_EDWDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="PD_EDWDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PD_EDWDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PD_EDWDataSet4.xss">
+      <DependentUpon>PD_EDWDataSet4.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -323,6 +352,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Epicicon.ico" />
+    <None Include="Resources\COMMCLASS.PNG" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="Microsoft.Win32.Primitives">

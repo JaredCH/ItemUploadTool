@@ -32,12 +32,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabcontrol = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
@@ -272,6 +272,7 @@
             this.BacklogDGV = new System.Windows.Forms.DataGridView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.newtrans = new System.Windows.Forms.TextBox();
@@ -295,6 +296,28 @@
             this.addLineWithCustomQtyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countQtyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MTODBREVDG = new System.Windows.Forms.DataGridView();
+            this.mtodbrevassistupload = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.duplicateLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setTransmittalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleLineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.allLinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearItemCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleLineToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.allLinesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.barcodegridview = new System.Windows.Forms.DataGridView();
+            this.job = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spoolnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button4 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -320,18 +343,7 @@
             this.pD_EDWDataSet1 = new ItemUploadTool.PD_EDWDataSet1();
             this.pD_EDWDataSet11 = new ItemUploadTool.PD_EDWDataSet1();
             this.pD_EDWDataSet12 = new ItemUploadTool.PD_EDWDataSet1();
-            this.mtodbrevassistupload = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.duplicateLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setTransmittalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.singleLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.allLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.singleLineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.allLinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearItemCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.singleLineToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.allLinesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.tabcontrol.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.t1imtable)).BeginInit();
@@ -374,6 +386,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.MTODBMTODG)).BeginInit();
             this.mtodbrevassit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MTODBREVDG)).BeginInit();
+            this.mtodbrevassistupload.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodegridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jDEItemMasterBindingSource)).BeginInit();
@@ -390,7 +408,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet12)).BeginInit();
-            this.mtodbrevassistupload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // tabcontrol
@@ -404,6 +422,7 @@
             this.tabcontrol.Controls.Add(this.tabPage4);
             this.tabcontrol.Controls.Add(this.tabPage5);
             this.tabcontrol.Controls.Add(this.tabPage6);
+            this.tabcontrol.Controls.Add(this.tabPage7);
             this.tabcontrol.Location = new System.Drawing.Point(-1, 1);
             this.tabcontrol.Name = "tabcontrol";
             this.tabcontrol.SelectedIndex = 0;
@@ -470,11 +489,13 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Blue;
             this.label13.Location = new System.Drawing.Point(236, 81);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(64, 13);
             this.label13.TabIndex = 60;
             this.label13.Text = "Comm Class";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // t1commclass
             // 
@@ -1973,14 +1994,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.t3breakout.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.t3breakout.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.t3breakout.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.t3breakout.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.t3breakout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.t3breakout.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.t3subcom,
@@ -1991,25 +2012,25 @@
             this.t3sgc,
             this.Desc,
             this.Partcode});
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.t3breakout.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.t3breakout.DefaultCellStyle = dataGridViewCellStyle2;
             this.t3breakout.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.t3breakout.Location = new System.Drawing.Point(383, 26);
             this.t3breakout.Name = "t3breakout";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.t3breakout.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.t3breakout.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.t3breakout.RowHeadersVisible = false;
             this.t3breakout.RowTemplate.Height = 15;
             this.t3breakout.Size = new System.Drawing.Size(785, 556);
@@ -2538,6 +2559,20 @@
             this.splitContainer1.SplitterDistance = 392;
             this.splitContainer1.TabIndex = 0;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(409, 20);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(59, 17);
+            this.checkBox2.TabIndex = 18;
+            this.checkBox2.Text = "Unfilter";
+            this.toolTip1.SetToolTip(this.checkBox2, "Check this box if you want to no longer filter for this value.\r\n*IMPORTANT* - Whe" +
+        "n you add items with this check box selected, it will add them with the Ref Dwg " +
+        "as what ever is typed in this box.");
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -2683,35 +2718,35 @@
             // MTODBMTODG
             // 
             this.MTODBMTODG.AllowUserToAddRows = false;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MTODBMTODG.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MTODBMTODG.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.MTODBMTODG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MTODBMTODG.ContextMenuStrip = this.mtodbrevassit;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MTODBMTODG.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MTODBMTODG.DefaultCellStyle = dataGridViewCellStyle5;
             this.MTODBMTODG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MTODBMTODG.Location = new System.Drawing.Point(0, 70);
             this.MTODBMTODG.Name = "MTODBMTODG";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MTODBMTODG.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MTODBMTODG.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.MTODBMTODG.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.MTODBMTODG.Size = new System.Drawing.Size(1177, 322);
             this.MTODBMTODG.TabIndex = 0;
@@ -2765,6 +2800,194 @@
             this.MTODBREVDG.Name = "MTODBREVDG";
             this.MTODBREVDG.Size = new System.Drawing.Size(1177, 283);
             this.MTODBREVDG.TabIndex = 1;
+            // 
+            // mtodbrevassistupload
+            // 
+            this.mtodbrevassistupload.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.duplicateLinesToolStripMenuItem,
+            this.setTransmittalToolStripMenuItem,
+            this.setDateToolStripMenuItem,
+            this.clearItemCodeToolStripMenuItem});
+            this.mtodbrevassistupload.Name = "mtodbrevassistupload";
+            this.mtodbrevassistupload.Size = new System.Drawing.Size(160, 92);
+            // 
+            // duplicateLinesToolStripMenuItem
+            // 
+            this.duplicateLinesToolStripMenuItem.Name = "duplicateLinesToolStripMenuItem";
+            this.duplicateLinesToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.duplicateLinesToolStripMenuItem.Text = "Duplicate Lines";
+            // 
+            // setTransmittalToolStripMenuItem
+            // 
+            this.setTransmittalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleLineToolStripMenuItem,
+            this.allLinesToolStripMenuItem});
+            this.setTransmittalToolStripMenuItem.Name = "setTransmittalToolStripMenuItem";
+            this.setTransmittalToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.setTransmittalToolStripMenuItem.Text = "Set Transmittal";
+            // 
+            // singleLineToolStripMenuItem
+            // 
+            this.singleLineToolStripMenuItem.Name = "singleLineToolStripMenuItem";
+            this.singleLineToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.singleLineToolStripMenuItem.Text = "Single Line";
+            // 
+            // allLinesToolStripMenuItem
+            // 
+            this.allLinesToolStripMenuItem.Name = "allLinesToolStripMenuItem";
+            this.allLinesToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.allLinesToolStripMenuItem.Text = "All Lines";
+            // 
+            // setDateToolStripMenuItem
+            // 
+            this.setDateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleLineToolStripMenuItem1,
+            this.allLinesToolStripMenuItem1});
+            this.setDateToolStripMenuItem.Name = "setDateToolStripMenuItem";
+            this.setDateToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.setDateToolStripMenuItem.Text = "Set Date";
+            // 
+            // singleLineToolStripMenuItem1
+            // 
+            this.singleLineToolStripMenuItem1.Name = "singleLineToolStripMenuItem1";
+            this.singleLineToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.singleLineToolStripMenuItem1.Text = "Single Line";
+            // 
+            // allLinesToolStripMenuItem1
+            // 
+            this.allLinesToolStripMenuItem1.Name = "allLinesToolStripMenuItem1";
+            this.allLinesToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.allLinesToolStripMenuItem1.Text = "All Lines";
+            // 
+            // clearItemCodeToolStripMenuItem
+            // 
+            this.clearItemCodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.singleLineToolStripMenuItem2,
+            this.allLinesToolStripMenuItem2});
+            this.clearItemCodeToolStripMenuItem.Name = "clearItemCodeToolStripMenuItem";
+            this.clearItemCodeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.clearItemCodeToolStripMenuItem.Text = "Clear Item Code";
+            // 
+            // singleLineToolStripMenuItem2
+            // 
+            this.singleLineToolStripMenuItem2.Name = "singleLineToolStripMenuItem2";
+            this.singleLineToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.singleLineToolStripMenuItem2.Text = "Single Line";
+            // 
+            // allLinesToolStripMenuItem2
+            // 
+            this.allLinesToolStripMenuItem2.Name = "allLinesToolStripMenuItem2";
+            this.allLinesToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.allLinesToolStripMenuItem2.Text = "All Lines";
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage7.Controls.Add(this.pictureBox8);
+            this.tabPage7.Controls.Add(this.pictureBox7);
+            this.tabPage7.Controls.Add(this.pictureBox6);
+            this.tabPage7.Controls.Add(this.button5);
+            this.tabPage7.Controls.Add(this.label16);
+            this.tabPage7.Controls.Add(this.trackBar1);
+            this.tabPage7.Controls.Add(this.barcodegridview);
+            this.tabPage7.Controls.Add(this.button4);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1183, 685);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "  Barcodes  ";
+            this.tabPage7.Click += new System.EventHandler(this.tabPage7_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(572, 62);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(42, 35);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 6;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.InitialImage = null;
+            this.pictureBox6.Location = new System.Drawing.Point(361, 62);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(42, 35);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 5;
+            this.pictureBox6.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(426, 131);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(113, 31);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Auto-Send Barcodes";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(423, 64);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "millisecond interval";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(400, 80);
+            this.trackBar1.Maximum = 3000;
+            this.trackBar1.Minimum = 800;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(166, 45);
+            this.trackBar1.SmallChange = 50;
+            this.trackBar1.TabIndex = 2;
+            this.trackBar1.TickFrequency = 100;
+            this.trackBar1.Value = 1200;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // barcodegridview
+            // 
+            this.barcodegridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.barcodegridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.job,
+            this.spoolnum,
+            this.barcode});
+            this.barcodegridview.Location = new System.Drawing.Point(12, 62);
+            this.barcodegridview.Name = "barcodegridview";
+            this.barcodegridview.Size = new System.Drawing.Size(343, 614);
+            this.barcodegridview.TabIndex = 1;
+            // 
+            // job
+            // 
+            this.job.HeaderText = "Job";
+            this.job.Name = "job";
+            // 
+            // spoolnum
+            // 
+            this.spoolnum.HeaderText = "Spool#";
+            this.spoolnum.Name = "spoolnum";
+            // 
+            // barcode
+            // 
+            this.barcode.HeaderText = "Barcode";
+            this.barcode.Name = "barcode";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(14, 15);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(106, 29);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Select Files";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // timer1
             // 
@@ -2880,98 +3103,17 @@
             this.pD_EDWDataSet12.DataSetName = "PD_EDWDataSet1";
             this.pD_EDWDataSet12.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // mtodbrevassistupload
+            // pictureBox8
             // 
-            this.mtodbrevassistupload.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.duplicateLinesToolStripMenuItem,
-            this.setTransmittalToolStripMenuItem,
-            this.setDateToolStripMenuItem,
-            this.clearItemCodeToolStripMenuItem});
-            this.mtodbrevassistupload.Name = "mtodbrevassistupload";
-            this.mtodbrevassistupload.Size = new System.Drawing.Size(160, 92);
-            // 
-            // duplicateLinesToolStripMenuItem
-            // 
-            this.duplicateLinesToolStripMenuItem.Name = "duplicateLinesToolStripMenuItem";
-            this.duplicateLinesToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.duplicateLinesToolStripMenuItem.Text = "Duplicate Lines";
-            // 
-            // setTransmittalToolStripMenuItem
-            // 
-            this.setTransmittalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.singleLineToolStripMenuItem,
-            this.allLinesToolStripMenuItem});
-            this.setTransmittalToolStripMenuItem.Name = "setTransmittalToolStripMenuItem";
-            this.setTransmittalToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.setTransmittalToolStripMenuItem.Text = "Set Transmittal";
-            // 
-            // singleLineToolStripMenuItem
-            // 
-            this.singleLineToolStripMenuItem.Name = "singleLineToolStripMenuItem";
-            this.singleLineToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.singleLineToolStripMenuItem.Text = "Single Line";
-            // 
-            // allLinesToolStripMenuItem
-            // 
-            this.allLinesToolStripMenuItem.Name = "allLinesToolStripMenuItem";
-            this.allLinesToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.allLinesToolStripMenuItem.Text = "All Lines";
-            // 
-            // setDateToolStripMenuItem
-            // 
-            this.setDateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.singleLineToolStripMenuItem1,
-            this.allLinesToolStripMenuItem1});
-            this.setDateToolStripMenuItem.Name = "setDateToolStripMenuItem";
-            this.setDateToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.setDateToolStripMenuItem.Text = "Set Date";
-            // 
-            // singleLineToolStripMenuItem1
-            // 
-            this.singleLineToolStripMenuItem1.Name = "singleLineToolStripMenuItem1";
-            this.singleLineToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
-            this.singleLineToolStripMenuItem1.Text = "Single Line";
-            // 
-            // allLinesToolStripMenuItem1
-            // 
-            this.allLinesToolStripMenuItem1.Name = "allLinesToolStripMenuItem1";
-            this.allLinesToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
-            this.allLinesToolStripMenuItem1.Text = "All Lines";
-            // 
-            // clearItemCodeToolStripMenuItem
-            // 
-            this.clearItemCodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.singleLineToolStripMenuItem2,
-            this.allLinesToolStripMenuItem2});
-            this.clearItemCodeToolStripMenuItem.Name = "clearItemCodeToolStripMenuItem";
-            this.clearItemCodeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.clearItemCodeToolStripMenuItem.Text = "Clear Item Code";
-            // 
-            // singleLineToolStripMenuItem2
-            // 
-            this.singleLineToolStripMenuItem2.Name = "singleLineToolStripMenuItem2";
-            this.singleLineToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
-            this.singleLineToolStripMenuItem2.Text = "Single Line";
-            // 
-            // allLinesToolStripMenuItem2
-            // 
-            this.allLinesToolStripMenuItem2.Name = "allLinesToolStripMenuItem2";
-            this.allLinesToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
-            this.allLinesToolStripMenuItem2.Text = "All Lines";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(409, 20);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(59, 17);
-            this.checkBox2.TabIndex = 18;
-            this.checkBox2.Text = "Unfilter";
-            this.toolTip1.SetToolTip(this.checkBox2, "Check this box if you want to no longer filter for this value.\r\n*IMPORTANT* - Whe" +
-        "n you add items with this check box selected, it will add them with the Ref Dwg " +
-        "as what ever is typed in this box.");
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(806, 2);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(369, 184);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 22;
+            this.pictureBox8.TabStop = false;
             // 
             // Form1
             // 
@@ -3032,6 +3174,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.MTODBMTODG)).EndInit();
             this.mtodbrevassit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MTODBREVDG)).EndInit();
+            this.mtodbrevassistupload.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodegridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mtoDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jDEItemMasterBindingSource)).EndInit();
@@ -3048,7 +3197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pD_EDWDataSet12)).EndInit();
-            this.mtodbrevassistupload.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3348,6 +3497,18 @@
         private System.Windows.Forms.ToolStripMenuItem allLinesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem countQtyToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.DataGridView barcodegridview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn job;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spoolnum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcode;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
 

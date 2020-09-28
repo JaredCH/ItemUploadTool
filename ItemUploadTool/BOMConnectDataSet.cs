@@ -9,6 +9,10 @@
 
 namespace ItemUploadTool.BOMConnectDataSetTableAdapters
 {
+    partial class v_spoolsTableAdapter
+    {
+    }
+
     partial class MTODashboardTableAdapter
     {
     }

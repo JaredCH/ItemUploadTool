@@ -20,6 +20,10 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Threading;
+
+
+
 
 //TODO
 //
@@ -41,8 +45,10 @@ namespace ItemUploadTool
         DataTable table3 = new DataTable("BOMLOOKUP");
         DataTable table4 = new DataTable("Refdwg");
         DataTable table5 = new DataTable("bcodeslist");
+        DataTable table6 = new DataTable("bARcode");
 
         DataTable mtodbmto = null;
+        DataTable bcodedt = null;
         DataTable mtodbmtorev = null;
         List<string> listofjobs = new List<string>();
 
@@ -62,7 +68,7 @@ namespace ItemUploadTool
         PD_EDWDataSet3TableAdapters.jobsTableAdapter GetJobNum = new PD_EDWDataSet3TableAdapters.jobsTableAdapter();
         PD_EDWDataSet3TableAdapters.isoLogTableAdapter IsoLogs = new PD_EDWDataSet3TableAdapters.isoLogTableAdapter();
         PD_EDWDataSet3TableAdapters.MTODashboardTableAdapter mtodbstuff = new PD_EDWDataSet3TableAdapters.MTODashboardTableAdapter();
-
+        PD_EDWDataSet4TableAdapters.spoolsTableAdapter barcodefinder = new PD_EDWDataSet4TableAdapters.spoolsTableAdapter();
 
         public Form1()
         {
@@ -283,6 +289,7 @@ namespace ItemUploadTool
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            label16.Text = trackBar1.Value.ToString() + " millisecond interval";
             // TODO: This line of code loads data into the 'pD_EDWDataSet31.Transmittals' table. You can move, or remove it, as needed.
             this.transmittalsTableAdapter.Fill(this.pD_EDWDataSet31.Transmittals);
             // TODO: This line of code loads data into the 'pD_EDWDataSet3.Transmittals' table. You can move, or remove it, as needed.
@@ -742,7 +749,7 @@ namespace ItemUploadTool
                 double t1wtnum = Convert.ToDouble(t1wt.Text);
                 double t1sanum = Convert.ToDouble(t1sa.Text);
 
-                if (t1mat.Text == String.Empty || (t1gl.Text == String.Empty || (t1wt.Text == String.Empty || (t1sa.Text == String.Empty || (t1desc.Text == String.Empty || (t1pcode.Text == String.Empty || (t1wtnum <= 0 || (t1sanum <= 0) || (t1sanum >= t1wtnum))))))))
+                if (t1mat.Text == String.Empty || (t1gl.Text == String.Empty || (t1wt.Text == String.Empty || (t1sa.Text == String.Empty || (t1desc.Text == String.Empty || (t1pcode.Text == String.Empty || (t1commclass.Text == String.Empty || (t1wtnum <= 0 || (t1sanum <= 0) || (t1sanum >= t1wtnum)))))))))
                 {
                     MessageBox.Show("Please make sure all fields are filled out.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -2166,6 +2173,7 @@ namespace ItemUploadTool
                 t1sa.Text = im_table.Rows[0]["SURFACE_AREA_CONV"].ToString();
                 t1desc.Text = (im_table.Rows[0]["ITEM_DESC_1"].ToString() + im_table.Rows[0]["ITEM_DESC_2"].ToString());
                 t1template.Text = im_table.Rows[0]["ITEM_TEMPLATE"].ToString();
+
             }
             catch (Exception ex)
             {
@@ -4198,6 +4206,75 @@ namespace ItemUploadTool
             {
                 mtodbmto.DefaultView.RowFilter = "(Source IS NULL OR Source LIKE '%" + textBox1.Text + "%')  AND (Pipeline_Reference IS NULL OR PipeLine_Reference LIKE  '%" + textBox2.Text + "%') AND (Piecemark IS NULL OR Piecemark LIKE  '%" + textBox3.Text + "%') AND (Description IS NULL OR Description LIKE  '%" + textBox4.Text + "%') AND (Long_ID IS NULL OR Long_ID LIKE  '%" + textBox5.Text + "%') AND (JDE_Desc IS NULL OR JDE_Desc LIKE  '%" + textBox6.Text + "%')";
             }
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            var newForm = new Form4();
+            newForm.Show();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.Multiselect = true;
+                openFileDialog.Title = "Select Spools";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+                    try
+                    {
+                        foreach (String filename in openFileDialog.SafeFileNames)
+                        {
+                            //string blaaaaaaah = barcodefinder.GetData(filename.Substring(9, 6).ToString(), filename.Left(5).ToString()).ToString();
+                            //MessageBox.Show(blaaaaaaah.ToString());
+
+
+                            bcodedt = barcodefinder.GetData(filename.Substring(9, 6).ToString(), filename.Left(5).ToString());
+                            barcodegridview.Rows.Add(filename.Left(5).ToString(), filename.Substring(9, 6), bcodedt.Rows[0][0].ToString());
+                        }
+                    }
+                    catch { }
+                    
+                }
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            label16.Text = trackBar1.Value.ToString() + " millisecond interval";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("After Clicking 'OK', you will have 3 seconds to click within the window or text box you wish to send text to." + "\n\n" + "You may Press Alt + F4 To cancel this at any time.", "Instructions");
+            Thread.Sleep(3000);
+            try
+            {
+                foreach (DataGridViewRow row in barcodegridview.Rows)
+                {
+                    SendKeys.Send(row.Cells["barcode"].Value.ToString() + "{Enter}");
+                    Thread.Sleep(trackBar1.Value);
+                }
+               
+            }
+            catch { }
+            MessageBox.Show("Task Complete", "Task Complete");
+        }
+
+        private void tabPage7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
