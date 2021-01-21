@@ -64,8 +64,8 @@ namespace ItemUploadTool
         {
             dataGridView1.Rows.Add("0A", "CARBON STEEL WLD E/0.5 MOLY", "","43","316/316L ABS APPROVED");
             dataGridView1.Rows.Add("00", "CS & LTCS @ >= -20F", "","44","JACKETED STAINLESS STEEL");
-            dataGridView1.Rows.Add("01", "HI-YIELD CS", "","45","SOUR SERVICE 316L STNLS STEEL");
-            dataGridView1.Rows.Add("02", "NACE CARBON STEEL", "","46","317 STAINLESS STEEL");
+            dataGridView1.Rows.Add("01", "HI-YIELD CS", "","46","SOUR SERVICE 316L STNLS STEEL");
+            dataGridView1.Rows.Add("02", "NACE CARBON STEEL", "","47","317 STAINLESS STEEL");
             dataGridView1.Rows.Add("03", "GALVANIZED CS-ABS APPROVED", "","48","309/310 STAINLESS STEEL ");
             dataGridView1.Rows.Add("04", "RUBBER LINED CS", "","50","B88 COPPER");
             dataGridView1.Rows.Add("05", "COAT & WRAP CS", "","55","BRONZE");

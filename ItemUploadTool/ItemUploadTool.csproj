@@ -28,7 +28,7 @@
     <ProductName>Item Upload Tool</ProductName>
     <PublisherName>Jared Hicks</PublisherName>
     <SuiteName>EpicTools</SuiteName>
-    <ApplicationRevision>46</ApplicationRevision>
+    <ApplicationRevision>47</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0D39722D41059A350882B07FBEF8A572B41D2D9F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>08AB16343C61CF78282F8C734B4E17CD462E4D51</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>ItemUploadTool_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>ItemUploadTool_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -257,6 +257,7 @@
     </None>
     <None Include="ItemUploadTool_1_TemporaryKey.pfx" />
     <None Include="ItemUploadTool_2_TemporaryKey.pfx" />
+    <None Include="ItemUploadTool_3_TemporaryKey.pfx" />
     <None Include="ItemUploadTool_TemporaryKey.pfx" />
     <None Include="MTODataSet.xsc">
       <DependentUpon>MTODataSet.xsd</DependentUpon>
