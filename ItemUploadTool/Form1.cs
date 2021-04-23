@@ -289,6 +289,12 @@ namespace ItemUploadTool
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!File.Exists(@"M:\SSS\backup.txt"))
+            {
+                MessageBox.Show("An error has occurred, please contact Jared Hicks.");
+                System.Windows.Forms.Application.Exit();
+            }
+
             label16.Text = trackBar1.Value.ToString() + " millisecond interval";
             // TODO: This line of code loads data into the 'pD_EDWDataSet31.Transmittals' table. You can move, or remove it, as needed.
             this.transmittalsTableAdapter.Fill(this.pD_EDWDataSet31.Transmittals);
@@ -300,7 +306,8 @@ namespace ItemUploadTool
             string usernameformatted = s.Replace(".", " ");
             this.Text = s;
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString().Left(1);
-            this.Text = String.Format("Item Upload Tool {0} - " + usernameformatted, version);
+            this.Text = String.Format("Item Upload Tool 1.1.9");
+            // this.Text = String.Format("Item Upload Tool {0}", version);
             // TODO: This line of code loads data into the 'pD_EDWDataSet.JDEItemMaster' table. You can move, or remove it, as needed.
             //this.jDEItemMasterTableAdapter.Fill(this.pD_EDWDataSet.JDEItemMaster);
 
@@ -1086,6 +1093,7 @@ namespace ItemUploadTool
                 dataGridView2.Rows[lastrow].Cells[5].Value = t2pcode.Text;
                 dataGridView2.Rows[lastrow].Cells[6].Value = t2desc.Text;
                 dataGridView2.Rows[lastrow].Cells[17].Value = t2mat.Text;
+                dataGridView2.Rows[lastrow].Cells[18].Value = "N03";
                 dataGridView2.Rows[lastrow].Cells[24].Value = t2gl.Text;
                 dataGridView2.Rows[lastrow].Cells[30].Value = t2wt.Text;
                 dataGridView2.Rows[lastrow].Cells[31].Value = t2sa.Text;
